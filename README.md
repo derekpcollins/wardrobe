@@ -1,1 +1,1 @@
-echo # Wardrobe
+# Wardrobe
