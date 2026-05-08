@@ -11,7 +11,7 @@
   <style>
 
 /* ============================================================
-   WARDROBE APP — Premium iOS Design System
+   WARDROBE APP â Premium iOS Design System
    ============================================================ */
 
 /* Reset & Base */
@@ -1167,17 +1167,17 @@ html, body {
   <!-- LOADING OVERLAY -->
   <div id="loading-overlay" class="loading-overlay">
     <div class="spinner"></div>
-    <p>Loading your wardrobeÃ¢â¬Â¦</p>
+    <p>Loading your wardrobeÃÂ¢Ã¢ÂÂ¬ÃÂ¦</p>
   </div>
 
   <!-- TOAST -->
   <div id="toast" class="toast"></div>
 
   <!-- FILTER MODAL -->
-  <div id="filter-modal" class="modal-backdrop">
-    <div class="modal-sheet">
+  <div id="filter-modal" class="modal-backdrop" onclick="closeFilterModal()">
+    <div class="modal-sheet" onclick="event.stopPropagation()">
       <div class="modal-handle"></div>
-      <div class="modal-title">Filter Items</div>
+      <div class="modal-title">Filter Items</div><button class="modal-close-btn" onclick="closeFilterModal()" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;line-height:1;">✕</button>
       <div class="filter-modal-section">
         <h3>Status</h3>
         <div class="filter-option-row" id="filter-status-opts"></div>
@@ -1190,8 +1190,8 @@ html, body {
         <h3>Layer</h3>
         <div class="filter-option-row" id="filter-layer-opts"></div>
       </div>
-      <button class="btn btn-primary btn-full" onclick="applyFilters()">Apply Filters</button>
-      <button class="btn btn-secondary btn-full" style="margin-top:10px;" onclick="clearFilters()">Clear All</button>
+      <button class="btn btn-primary btn-full" onclick="applyFilters();closeFilterModal()">Apply Filters</button>
+      <button class="btn btn-secondary btn-full" style="margin-top:10px;" onclick="clearFilters();closeFilterModal()">Clear All</button>
     </div>
   </div>
 
@@ -1203,38 +1203,38 @@ html, body {
     <div id="dashboard-season-banner" class="dashboard-season-banner">
       <div>
         <div class="season-label">Current Season</div>
-        <div class="season-name" id="dash-season-name">Ã¢â¬â</div>
+        <div class="season-name" id="dash-season-name">ÃÂ¢Ã¢ÂÂ¬Ã¢ÂÂ</div>
       </div>
-      <div class="season-icon" id="dash-season-icon">Ã°Å¸ÅÂ¿</div>
+      <div class="season-icon" id="dash-season-icon">ÃÂ°ÃÂ¸ÃÂÃÂ¿</div>
     </div>
 
     <div class="stats-grid" id="stats-grid">
       <div class="stat-card" onclick="navigate('wardrobe')">
-        <div class="stat-number" id="stat-total">Ã¢â¬â</div>
+        <div class="stat-number" id="stat-total">ÃÂ¢Ã¢ÂÂ¬Ã¢ÂÂ</div>
         <div class="stat-label">Total Items</div>
       </div>
       <div class="stat-card alert" onclick="showOverdue()">
-        <div class="stat-number" id="stat-overdue">Ã¢â¬â</div>
+        <div class="stat-number" id="stat-overdue">ÃÂ¢Ã¢ÂÂ¬Ã¢ÂÂ</div>
         <div class="stat-label">Overdue</div>
       </div>
       <div class="stat-card warn" onclick="showDueSoon()">
-        <div class="stat-number" id="stat-soon">Ã¢â¬â</div>
+        <div class="stat-number" id="stat-soon">ÃÂ¢Ã¢ÂÂ¬Ã¢ÂÂ</div>
         <div class="stat-label">Due in 60 Days</div>
       </div>
       <div class="stat-card" onclick="navigate('review')">
-        <div class="stat-number" id="stat-reviewed">Ã¢â¬â</div>
+        <div class="stat-number" id="stat-reviewed">ÃÂ¢Ã¢ÂÂ¬Ã¢ÂÂ</div>
         <div class="stat-label">Days Since Review</div>
       </div>
     </div>
 
     <div id="review-remind-banner" style="display:none;">
       <div class="review-banner" onclick="navigate('review')">
-        <div style="font-size:24px;">Ã°Å¸âÂ</div>
+        <div style="font-size:24px;">ÃÂ°ÃÂ¸Ã¢ÂÂÃÂ</div>
         <div class="review-banner-text">
           <div class="review-banner-title">Seasonal Review Recommended</div>
           <div class="review-banner-sub" id="review-remind-sub">Last reviewed over 90 days ago</div>
         </div>
-        <div style="font-size:18px; color:var(--blue);">Ã¢â¬Âº</div>
+        <div style="font-size:18px; color:var(--blue);">ÃÂ¢Ã¢ÂÂ¬ÃÂº</div>
       </div>
     </div>
 
@@ -1244,7 +1244,7 @@ html, body {
         <button class="see-all" onclick="showOverdue()">See all</button>
       </div>
       <div class="card" style="margin:0 16px;" id="attention-list">
-        <div class="empty-state" style="padding:24px;"><p style="font-size:14px;color:var(--text-3);">All items are in good shape Ã°Å¸Å½â°</p></div>
+        <div class="empty-state" style="padding:24px;"><p style="font-size:14px;color:var(--text-3);">All items are in good shape ÃÂ°ÃÂ¸ÃÂ½Ã¢ÂÂ°</p></div>
       </div>
     </div>
 
@@ -1265,13 +1265,13 @@ html, body {
     <div class="top-header">
       <h1>My Wardrobe</h1>
       <button class="header-action" onclick="openEditForm(null)" title="Add Item">
-        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <span class="icon">+</span>
       </button>
     </div>
     <div class="search-bar">
       <div class="search-input-wrap">
-        <span class="search-icon">Ã°Å¸âÂ</span>
-        <input type="search" class="search-input" id="search-input" placeholder="Search itemsÃ¢â¬Â¦" oninput="renderWardrobe()" />
+        <span class="search-icon">ÃÂ°ÃÂ¸Ã¢ÂÂÃÂ</span>
+        <input type="search" class="search-input" id="search-input" placeholder="Search itemsÃÂ¢Ã¢ÂÂ¬ÃÂ¦" oninput="renderWardrobe()" />
       </div>
       <button id="filter-toggle-btn" class="filter-btn" onclick="openFilterModal()">Filter</button>
     </div>
@@ -1283,11 +1283,11 @@ html, body {
   <div id="view-edit" class="view">
     <div class="top-header">
       <button class="header-action" onclick="closeEditForm()" style="margin-left:-8px;">
-        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        <span class="icon">✕</span>
       </button>
       <h1 id="edit-title">Add Item</h1>
       <button class="header-action" id="delete-btn" onclick="deleteItem()" title="Delete" style="display:none;">
-        <svg viewBox="0 0 24 24" stroke="var(--red)"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+        <span class="icon">✕</span>
       </button>
     </div>
     <div class="edit-form" id="edit-form-body"></div>
@@ -1304,7 +1304,7 @@ html, body {
     </div>
     <div id="review-items-list"></div>
     <div class="review-complete-btn">
-      <button class="btn btn-primary btn-full" onclick="completeReview()">Ã¢Åâ Log Review Complete</button>
+      <button class="btn btn-primary btn-full" onclick="completeReview()">ÃÂ¢ÃÂÃ¢ÂÂ Log Review Complete</button>
     </div>
     <div style="height:8px;"></div>
   </div>
@@ -1313,7 +1313,7 @@ html, body {
   <div id="view-settings" class="view">
     <div class="top-header"><h1>Settings</h1></div>
     <div class="app-info">
-      <h2>Ã°Å¸ââ Wardrobe</h2>
+      <h2>ÃÂ°ÃÂ¸Ã¢ÂÂÃ¢ÂÂ Wardrobe</h2>
       <p>Your personal capsule wardrobe tracker</p>
     </div>
     <div class="settings-list">
@@ -1330,31 +1330,31 @@ html, body {
       </div>
       <div class="settings-item">
         <h3>Sync Status</h3>
-        <p id="sync-status-text">Checking connectionÃ¢â¬Â¦</p>
+        <p id="sync-status-text">Checking connectionÃÂ¢Ã¢ÂÂ¬ÃÂ¦</p>
         <button class="btn btn-secondary" onclick="syncNow()">Sync Now</button>
       </div>
     </div>
     <div class="app-info" style="padding-top:16px;">
-      <p>Built with Ã¢â¢Â¥ for minimalist living</p>
+      <p>Built with ÃÂ¢Ã¢ÂÂ¢ÃÂ¥ for minimalist living</p>
     </div>
   </div>
 
   <!-- ==================== BOTTOM NAV ==================== -->
   <nav id="bottom-nav">
     <button class="nav-btn active" data-view="dashboard" onclick="navigate('dashboard')">
-      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      <span class="icon">⌂</span>
       <span class="nav-label">Dashboard</span>
     </button>
     <button class="nav-btn" data-view="wardrobe" onclick="navigate('wardrobe')">
-      <svg viewBox="0 0 24 24"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg>
+      <span class="icon">✦</span>
       <span class="nav-label">Wardrobe</span>
     </button>
     <button class="nav-btn" data-view="review" onclick="navigate('review')">
-      <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      <span class="icon">↺</span>
       <span class="nav-label">Review</span>
     </button>
     <button class="nav-btn" data-view="settings" onclick="navigate('settings')">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      <span class="icon">⚙</span>
       <span class="nav-label">Settings</span>
     </button>
   </nav>
@@ -1384,10 +1384,10 @@ function generateId() {
 
 function getCurrentSeason() {
   const m = new Date().getMonth() + 1;
-  if (m >= 3 && m <= 5) return { name: 'Spring', icon: 'Ã°Å¸ÅÂ¸', key: 'Spring-Summer' };
-  if (m >= 6 && m <= 8) return { name: 'Summer', icon: 'Ã¢Ëâ¬Ã¯Â¸Â', key: 'Spring-Summer' };
-  if (m >= 9 && m <= 11) return { name: 'Fall', icon: 'Ã°Å¸Ââ', key: 'Fall-Winter' };
-  return { name: 'Winter', icon: 'Ã¢ÂâÃ¯Â¸Â', key: 'Fall-Winter' };
+  if (m >= 3 && m <= 5) return { name: 'Spring', icon: 'ÃÂ°ÃÂ¸ÃÂÃÂ¸', key: 'Spring-Summer' };
+  if (m >= 6 && m <= 8) return { name: 'Summer', icon: 'ÃÂ¢ÃÂÃ¢ÂÂ¬ÃÂ¯ÃÂ¸ÃÂ', key: 'Spring-Summer' };
+  if (m >= 9 && m <= 11) return { name: 'Fall', icon: 'ÃÂ°ÃÂ¸ÃÂÃ¢ÂÂ', key: 'Fall-Winter' };
+  return { name: 'Winter', icon: 'ÃÂ¢ÃÂÃ¢ÂÂÃÂ¯ÃÂ¸ÃÂ', key: 'Fall-Winter' };
 }
 
 function replacementDate(item) {
@@ -1434,13 +1434,13 @@ function replacementText(item) {
 }
 
 function formatDate(isoStr) {
-  if (!isoStr) return 'Ã¢â¬â';
+  if (!isoStr) return 'ÃÂ¢Ã¢ÂÂ¬Ã¢ÂÂ';
   const d = new Date(isoStr + 'T00:00:00');
   return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 }
 
 function ageText(datePurchased) {
-  if (!datePurchased) return 'Ã¢â¬â';
+  if (!datePurchased) return 'ÃÂ¢Ã¢ÂÂ¬Ã¢ÂÂ';
   const days = Math.round((new Date() - new Date(datePurchased + 'T00:00:00')) / (1000 * 60 * 60 * 24));
   if (days < 30) return `${days}d old`;
   const months = Math.round(days / 30);
@@ -1463,7 +1463,7 @@ function showToast(msg, duration = 2500) {
   t._timer = setTimeout(() => t.classList.remove('show'), duration);
 }
 
-function showLoading(msg = 'SavingÃ¢â¬Â¦') {
+function showLoading(msg = 'SavingÃÂ¢Ã¢ÂÂ¬ÃÂ¦') {
   const o = document.getElementById('loading-overlay');
   o.querySelector('p').textContent = msg;
   o.style.display = 'flex';
@@ -1499,11 +1499,11 @@ async function loadData() {
     state.sha = data.sha;
     // Load last review date from localStorage as a local cache
     state.lastReviewed = localStorage.getItem('wardrobe_last_reviewed') || null;
-    document.getElementById('sync-status-text').textContent = `Synced with GitHub ÃÂ· ${state.items.length} items loaded`;
+    document.getElementById('sync-status-text').textContent = `Synced with GitHub ÃÂÃÂ· ${state.items.length} items loaded`;
   } catch (e) {
     console.error(e);
     showToast('Could not connect to GitHub. Working offline.');
-    document.getElementById('sync-status-text').textContent = 'Sync error Ã¢â¬â check your connection';
+    document.getElementById('sync-status-text').textContent = 'Sync error ÃÂ¢Ã¢ÂÂ¬Ã¢ÂÂ check your connection';
     // Try to load from localStorage cache
     const cached = localStorage.getItem('wardrobe_cache');
     if (cached) {
@@ -1531,7 +1531,7 @@ async function saveData() {
 }
 
 async function syncNow() {
-  showLoading('Syncing with GitHubÃ¢â¬Â¦');
+  showLoading('Syncing with GitHubÃÂ¢Ã¢ÂÂ¬ÃÂ¦');
   try {
     await loadData();
     renderAll();
@@ -1602,7 +1602,7 @@ function renderDashboard() {
       document.getElementById('review-remind-banner').style.display = 'none';
     }
   } else {
-    document.getElementById('stat-reviewed').textContent = 'Ã¢â¬â';
+    document.getElementById('stat-reviewed').textContent = 'ÃÂ¢Ã¢ÂÂ¬Ã¢ÂÂ';
     document.getElementById('review-remind-banner').style.display = 'block';
     document.getElementById('review-remind-sub').textContent = 'No review logged yet';
   }
@@ -1610,14 +1610,14 @@ function renderDashboard() {
   // Attention list (overdue)
   const attEl = document.getElementById('attention-list');
   if (overdue.length === 0) {
-    attEl.innerHTML = `<div class="empty-state" style="padding:24px;"><p style="font-size:14px;color:var(--text-3);">All items are in good shape Ã°Å¸Å½â°</p></div>`;
+    attEl.innerHTML = `<div class="empty-state" style="padding:24px;"><p style="font-size:14px;color:var(--text-3);">All items are in good shape ÃÂ°ÃÂ¸ÃÂ½Ã¢ÂÂ°</p></div>`;
   } else {
     attEl.innerHTML = overdue.slice(0, 5).map(item => `
       <div class="alert-item" onclick="openEditForm('${item.id}')">
         <div>${swatchesHTML(item.colors)}</div>
         <div class="alert-item-info">
           <div class="alert-item-name">${item.name}</div>
-          <div class="alert-item-meta">${item.brand} ÃÂ· ${replacementText(item)}</div>
+          <div class="alert-item-meta">${item.brand} ÃÂÃÂ· ${replacementText(item)}</div>
         </div>
         <span class="badge badge-overdue">Overdue</span>
       </div>
@@ -1639,7 +1639,7 @@ function renderDashboard() {
         <div>${swatchesHTML(item.colors)}</div>
         <div class="alert-item-info">
           <div class="alert-item-name">${item.name}</div>
-          <div class="alert-item-meta">${item.brand} ÃÂ· ${replacementText(item)}</div>
+          <div class="alert-item-meta">${item.brand} ÃÂÃÂ· ${replacementText(item)}</div>
         </div>
         <span class="badge badge-soon">Due Soon</span>
       </div>
@@ -1701,13 +1701,13 @@ function renderWardrobe() {
   const nonEmpty = cats.filter(c => grouped[c].length > 0);
 
   if (nonEmpty.length === 0) {
-    el.innerHTML = `<div class="empty-state"><div class="empty-icon">Ã°Å¸ââ</div><h3>${q || hasFilter ? 'No items match' : 'No items yet'}</h3><p>${q || hasFilter ? 'Try different search or filters' : 'Tap + to add your first item'}</p></div>`;
+    el.innerHTML = `<div class="empty-state"><div class="empty-icon">ÃÂ°ÃÂ¸Ã¢ÂÂÃ¢ÂÂ</div><h3>${q || hasFilter ? 'No items match' : 'No items yet'}</h3><p>${q || hasFilter ? 'Try different search or filters' : 'Tap + to add your first item'}</p></div>`;
     return;
   }
 
   el.innerHTML = nonEmpty.map(cat => `
     <div class="category-group">
-      <div class="category-label">${cat} ÃÂ· ${grouped[cat].length}</div>
+      <div class="category-label">${cat} ÃÂÃÂ· ${grouped[cat].length}</div>
       ${grouped[cat].map(item => itemCardHTML(item)).join('')}
     </div>
   `).join('');
@@ -1721,15 +1721,15 @@ function itemCardHTML(item) {
         <div class="item-card-body">
           <div class="item-card-name">${item.name}</div>
           <div class="item-card-meta">
-            <span>${item.brand || 'Ã¢â¬â'}</span>
-            ${item.quantity > 1 ? `<span>Ãâ${item.quantity}</span>` : ''}
+            <span>${item.brand || 'ÃÂ¢Ã¢ÂÂ¬Ã¢ÂÂ'}</span>
+            ${item.quantity > 1 ? `<span>ÃÂÃ¢ÂÂ${item.quantity}</span>` : ''}
             <span>${ageText(item.date_purchased)}</span>
             ${swatchesHTML(item.colors)}
           </div>
         </div>
         <div class="item-card-right">
           ${statusBadgeHTML(item)}
-          <span class="expand-arrow">Ã¢Åâ</span>
+          <span class="expand-arrow">ÃÂ¢ÃÂÃ¢ÂÂ</span>
         </div>
       </div>
       <div class="item-card-expanded">
@@ -1739,11 +1739,11 @@ function itemCardHTML(item) {
         </div>
         <div class="detail-row">
           <span class="detail-key">Season</span>
-          <span class="detail-val">${item.season || 'Ã¢â¬â'}</span>
+          <span class="detail-val">${item.season || 'ÃÂ¢Ã¢ÂÂ¬Ã¢ÂÂ'}</span>
         </div>
         <div class="detail-row">
           <span class="detail-key">Layer</span>
-          <span class="detail-val">${item.layer || 'Ã¢â¬â'}</span>
+          <span class="detail-val">${item.layer || 'ÃÂ¢Ã¢ÂÂ¬Ã¢ÂÂ'}</span>
         </div>
         ${item.care_instructions ? `<div class="detail-row"><span class="detail-key">Care</span><span class="detail-val">${item.care_instructions}</span></div>` : ''}
         ${item.notes ? `<div class="detail-row"><span class="detail-key">Notes</span><span class="detail-val">${item.notes}</span></div>` : ''}
@@ -1833,7 +1833,7 @@ function updateFilterChips() {
   }
   chips.style.display = 'flex';
   chips.innerHTML = active.map(f => `
-    <div class="chip active" onclick="removeFilter('${f.key}')">${f.label} Ãâ</div>
+    <div class="chip active" onclick="removeFilter('${f.key}')">${f.label} ÃÂÃ¢ÂÂ</div>
   `).join('');
 }
 
@@ -1857,10 +1857,10 @@ function openEditForm(itemId) {
   const formHTML = `
     ${item ? `
     <div class="replacement-info">
-      <div class="ri-icon">${getStatus(item) === 'overdue' ? 'Ã°Å¸âÂ´' : getStatus(item) === 'soon' ? 'Ã°Å¸Å¸Â¡' : 'Ã°Å¸Å¸Â¢'}</div>
+      <div class="ri-icon">${getStatus(item) === 'overdue' ? 'ÃÂ°ÃÂ¸Ã¢ÂÂÃÂ´' : getStatus(item) === 'soon' ? 'ÃÂ°ÃÂ¸ÃÂ¸ÃÂ¡' : 'ÃÂ°ÃÂ¸ÃÂ¸ÃÂ¢'}</div>
       <div>
         <div class="ri-text">${replacementText(item)}</div>
-        <div class="ri-sub">Purchased ${formatDate(item.date_purchased)} ÃÂ· ${ageText(item.date_purchased)}</div>
+        <div class="ri-sub">Purchased ${formatDate(item.date_purchased)} ÃÂÃÂ· ${ageText(item.date_purchased)}</div>
       </div>
     </div>` : ''}
 
@@ -1942,21 +1942,21 @@ function openEditForm(itemId) {
 
     <div class="form-group">
       <label>Purchase URL</label>
-      <input class="form-control" id="f-url" type="url" value="${item ? escH(item.purchase_url || '') : ''}" placeholder="https://Ã¢â¬Â¦" />
+      <input class="form-control" id="f-url" type="url" value="${item ? escH(item.purchase_url || '') : ''}" placeholder="https://ÃÂ¢Ã¢ÂÂ¬ÃÂ¦" />
     </div>
 
     <div class="form-group">
       <label>Care Instructions</label>
-      <textarea class="form-control" id="f-care" placeholder="e.g. Machine wash coldÃ¢â¬Â¦">${item ? escH(item.care_instructions || '') : ''}</textarea>
+      <textarea class="form-control" id="f-care" placeholder="e.g. Machine wash coldÃÂ¢Ã¢ÂÂ¬ÃÂ¦">${item ? escH(item.care_instructions || '') : ''}</textarea>
     </div>
 
     <div class="form-group">
       <label>Notes</label>
-      <textarea class="form-control" id="f-notes" placeholder="Personal notesÃ¢â¬Â¦">${item ? escH(item.notes || '') : ''}</textarea>
+      <textarea class="form-control" id="f-notes" placeholder="Personal notesÃÂ¢Ã¢ÂÂ¬ÃÂ¦">${item ? escH(item.notes || '') : ''}</textarea>
     </div>
 
     <div class="btn-row">
-      ${item && item.purchase_url ? `<a href="${escH(item.purchase_url)}" target="_blank" rel="noopener" class="btn btn-secondary" style="flex:1;text-decoration:none;">Ã°Å¸âºâ Buy Now</a>` : ''}
+      ${item && item.purchase_url ? `<a href="${escH(item.purchase_url)}" target="_blank" rel="noopener" class="btn btn-secondary" style="flex:1;text-decoration:none;">ÃÂ°ÃÂ¸Ã¢ÂÂºÃ¢ÂÂ Buy Now</a>` : ''}
       <button class="btn btn-primary" style="flex:2;" onclick="saveItem()">Save Item</button>
     </div>
     <div style="height:16px;"></div>
@@ -1981,7 +1981,7 @@ function colorEntryHTML(hex, idx) {
         <input type="color" id="cp-${idx}" value="${hex}" onchange="updateColor(${idx},this.value)" />
       </label>
       <span class="color-hex" id="cp-hex-${idx}">${hex}</span>
-      <button type="button" class="remove-color" onclick="removeColor(${idx})">Ãâ</button>
+      <button type="button" class="remove-color" onclick="removeColor(${idx})">ÃÂÃ¢ÂÂ</button>
     </div>
   `;
 }
@@ -2056,7 +2056,7 @@ async function saveItem() {
     state.items.push(newItem);
   }
 
-  showLoading('SavingÃ¢â¬Â¦');
+  showLoading('SavingÃÂ¢Ã¢ÂÂ¬ÃÂ¦');
   const ok = await saveData();
   hideLoading();
 
@@ -2070,7 +2070,7 @@ async function deleteItem() {
   if (!state.editingItemId) return;
   if (!confirm('Delete this item?')) return;
   state.items = state.items.filter(i => i.id !== state.editingItemId);
-  showLoading('DeletingÃ¢â¬Â¦');
+  showLoading('DeletingÃÂ¢Ã¢ÂÂ¬ÃÂ¦');
   const ok = await saveData();
   hideLoading();
   if (ok) {
@@ -2111,7 +2111,7 @@ function renderReview() {
   const el = document.getElementById('review-items-list');
   el.innerHTML = groups.map(g => `
     <div class="review-group">
-      <div class="review-group-header">${g.label} ÃÂ· ${g.items.length}</div>
+      <div class="review-group-header">${g.label} ÃÂÃÂ· ${g.items.length}</div>
       ${g.items.map(item => reviewItemHTML(item)).join('')}
     </div>
   `).join('');
@@ -2123,13 +2123,13 @@ function reviewItemHTML(item) {
     <div class="review-item">
       <div class="review-item-info">
         <div class="review-item-name">${item.name}</div>
-        <div class="review-item-meta">${item.brand || ''} ÃÂ· ${ageText(item.date_purchased)} ÃÂ· ${replacementText(item)}</div>
+        <div class="review-item-meta">${item.brand || ''} ÃÂÃÂ· ${ageText(item.date_purchased)} ÃÂÃÂ· ${replacementText(item)}</div>
       </div>
       <select class="review-select ${rs}" id="rs-${item.id}" onchange="setReviewStatus('${item.id}',this)">
-        <option value="">Ã¢â¬â Mark Ã¢â¬â</option>
-        <option value="reviewed" ${rs === 'reviewed' ? 'selected' : ''}>Ã¢Åâ Good</option>
-        <option value="replace-soon" ${rs === 'replace-soon' ? 'selected' : ''}>Ã¢Å¡Â  Replace Soon</option>
-        <option value="replace-now" ${rs === 'replace-now' ? 'selected' : ''}>Ã°Å¸âÂ´ Replace Now</option>
+        <option value="">ÃÂ¢Ã¢ÂÂ¬Ã¢ÂÂ Mark ÃÂ¢Ã¢ÂÂ¬Ã¢ÂÂ</option>
+        <option value="reviewed" ${rs === 'reviewed' ? 'selected' : ''}>ÃÂ¢ÃÂÃ¢ÂÂ Good</option>
+        <option value="replace-soon" ${rs === 'replace-soon' ? 'selected' : ''}>ÃÂ¢ÃÂ¡ÃÂ  Replace Soon</option>
+        <option value="replace-now" ${rs === 'replace-now' ? 'selected' : ''}>ÃÂ°ÃÂ¸Ã¢ÂÂÃÂ´ Replace Now</option>
       </select>
     </div>
   `;
@@ -2161,13 +2161,13 @@ async function completeReview() {
   });
 
   if (changed) {
-    showLoading('Saving review notesÃ¢â¬Â¦');
+    showLoading('Saving review notesÃÂ¢Ã¢ÂÂ¬ÃÂ¦');
     await saveData();
     hideLoading();
   }
 
   state.reviewStatuses = {};
-  showToast(`Review logged for ${today} Ã¢Åâ`);
+  showToast(`Review logged for ${today} ÃÂ¢ÃÂÃ¢ÂÂ`);
   renderDashboard();
   renderReview();
 }
@@ -2197,7 +2197,7 @@ function importJSON(event) {
       if (!Array.isArray(items)) throw new Error('Expected an array of items');
       if (!confirm(`Import ${items.length} items? This will replace all current data.`)) return;
       state.items = items;
-      showLoading('ImportingÃ¢â¬Â¦');
+      showLoading('ImportingÃÂ¢Ã¢ÂÂ¬ÃÂ¦');
       const ok = await saveData();
       hideLoading();
       if (ok) {
