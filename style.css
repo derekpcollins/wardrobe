@@ -418,6 +418,7 @@ html, body {
   height: 40px;
   flex-shrink: 0;
   overflow: visible;
+  color: #444;
 }
 
 .item-icon i {
