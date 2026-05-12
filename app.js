@@ -22,23 +22,6 @@ const SEASON_LABELS = {
   winter: 'Winter',
 };
 
-const CATEGORY_DEFAULTS = {
-  basics: 180,
-  tops: 730,
-  bottoms: 1095,
-  outerwear: 1825,
-  footwear: 730,
-  accessories: 1825,
-};
-
-const QUANTITY_DEFAULTS = {
-  basics: 7,
-  tops: 5,
-  bottoms: 3,
-  outerwear: 2,
-  footwear: 4,
-  accessories: 2,
-};
 
 // ── State ─────────────────────────────────────────────────
 
@@ -52,9 +35,6 @@ let filters = {
   brand: '',
 };
 
-let editingId = null;
-let formIntervalDirty = false;
-let formIdealQtyDirty = false;
 
 // ── Utilities ─────────────────────────────────────────────
 
@@ -88,9 +68,6 @@ function esc(str) {
     .replace(/"/g, '&quot;');
 }
 
-function generateId() {
-  return 'item-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
-}
 
 function getQtyStatus(item) {
   if (item.status === 'want-to-try') return null;
@@ -108,17 +85,6 @@ async function loadData() {
   items = await res.json();
 }
 
-function downloadJSON() {
-  const blob = new Blob([JSON.stringify(items, null, 2)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'wardrobe.json';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}
 
 // ── Filtering ─────────────────────────────────────────────
 
@@ -276,9 +242,6 @@ function renderItemCard(item) {
     badges.push(`<span class="item-qty">${item.quantity} / ${item.idealQuantity}</span>`);
   }
 
-  const pencilSvg = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`;
-  const trashSvg = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>`;
-
   return `
     <div class="item-card ${isWant ? 'item-card--want' : ''}">
       <div class="item-card-main">
@@ -292,223 +255,11 @@ function renderItemCard(item) {
           ${badges.length ? `<div class="item-badges">${badges.join('')}</div>` : ''}
           ${item.notes ? `<div class="item-notes">${esc(item.notes)}</div>` : ''}
         </div>
-        <div class="item-actions">
-          <button class="icon-btn item-edit-btn" data-id="${item.id}" aria-label="Edit ${esc(item.name)}">
-            ${pencilSvg}
-          </button>
-          <button class="icon-btn icon-btn--delete item-delete-btn" data-id="${item.id}" aria-label="Delete ${esc(item.name)}">
-            ${trashSvg}
-          </button>
-        </div>
       </div>
     </div>
   `;
 }
 
-// ── Modal ─────────────────────────────────────────────────
-
-function openModal(id) {
-  editingId = id || null;
-  formIntervalDirty  = false;
-  formIdealQtyDirty  = false;
-  const item = id ? items.find(i => i.id === id) : null;
-  document.getElementById('modal-title').textContent = item ? 'Edit Item' : 'Add Item';
-  buildForm(item);
-  document.getElementById('modal-backdrop').classList.remove('hidden');
-  document.getElementById('modal').scrollTop = 0;
-}
-
-function closeModal() {
-  document.getElementById('modal-backdrop').classList.add('hidden');
-  editingId = null;
-}
-
-function buildForm(item) {
-  const isOwned = !item || item.status === 'owned';
-  const selectedSeasons = item ? (item.seasons || []) : [];
-  const category = item ? item.category : 'basics';
-  const intervalDefault = CATEGORY_DEFAULTS[category] || 365;
-
-  document.getElementById('modal-body').innerHTML = `
-    <div class="form-status-toggle">
-      <button type="button" class="form-status-btn ${isOwned ? 'active' : ''}" data-status="owned">Owned</button>
-      <button type="button" class="form-status-btn ${!isOwned ? 'active' : ''}" data-status="want-to-try">Want to Try</button>
-    </div>
-
-    <div class="form-group">
-      <label class="form-label" for="f-name">Name *</label>
-      <input id="f-name" class="form-input" type="text" value="${esc(item?.name || '')}" placeholder="e.g. White Crew T-Shirt" autocomplete="off">
-    </div>
-
-    <div class="form-row">
-      <div class="form-group">
-        <label class="form-label" for="f-brand">Brand *</label>
-        <input id="f-brand" class="form-input" type="text" value="${esc(item?.brand || '')}" placeholder="e.g. Nike" autocomplete="off">
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="f-category">Category *</label>
-        <select id="f-category" class="form-select">
-          ${CATEGORIES.map(c => `<option value="${c}" ${category === c ? 'selected' : ''}>${CATEGORY_LABELS[c]}</option>`).join('')}
-        </select>
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group">
-        <label class="form-label" for="f-price">Price ($)</label>
-        <input id="f-price" class="form-input" type="number" min="0" step="0.01" value="${item?.price ?? ''}" placeholder="0">
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="f-size">Size</label>
-        <input id="f-size" class="form-input" type="text" value="${esc(item?.size || '')}" placeholder="e.g. M, 32x30">
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="form-label" for="f-url">URL</label>
-      <input id="f-url" class="form-input" type="url" value="${esc(item?.url || '')}" placeholder="https://…">
-    </div>
-
-    <div class="form-group">
-      <label class="form-label">Seasons *</label>
-      <div class="form-seasons">
-        ${SEASONS.map(s => `
-          <button type="button" class="form-season-pill ${selectedSeasons.includes(s) ? 'active' : ''}" data-season="${s}">
-            ${SEASON_LABELS[s]}
-          </button>
-        `).join('')}
-      </div>
-    </div>
-
-    <div id="owned-fields" style="${isOwned ? '' : 'display:none'}">
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label" for="f-date">Date Purchased</label>
-          <input id="f-date" class="form-input" type="date" value="${esc(item?.datePurchased || '')}">
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="f-interval">Replace every (days)</label>
-          <input id="f-interval" class="form-input" type="number" min="1"
-            value="${item?.replacementIntervalDays ?? intervalDefault}"
-            placeholder="${intervalDefault}">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label" for="f-qty">Quantity</label>
-          <input id="f-qty" class="form-input" type="number" min="0"
-            value="${item?.quantity ?? 1}" placeholder="1">
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="f-ideal-qty">Ideal Quantity</label>
-          <input id="f-ideal-qty" class="form-input" type="number" min="1"
-            value="${item?.idealQuantity ?? QUANTITY_DEFAULTS[category]}"
-            placeholder="${QUANTITY_DEFAULTS[category]}">
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="form-label" for="f-notes">Notes</label>
-      <textarea id="f-notes" class="form-textarea" placeholder="Any notes…">${esc(item?.notes || '')}</textarea>
-    </div>
-
-    ${item ? `<button type="button" class="btn-delete" id="form-delete-btn">Delete Item</button>` : ''}
-    <div style="height:8px"></div>
-  `;
-
-  // Status toggle
-  document.querySelectorAll('.form-status-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.form-status-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('owned-fields').style.display =
-        btn.dataset.status === 'owned' ? '' : 'none';
-    });
-  });
-
-  // Season pills
-  document.querySelectorAll('.form-season-pill').forEach(pill => {
-    pill.addEventListener('click', () => pill.classList.toggle('active'));
-  });
-
-  // Category → auto-fill interval and idealQty defaults (unless user touched them)
-  const intervalEl = document.getElementById('f-interval');
-  const idealQtyEl = document.getElementById('f-ideal-qty');
-  if (intervalEl) intervalEl.addEventListener('input', () => { formIntervalDirty = true; });
-  if (idealQtyEl) idealQtyEl.addEventListener('input', () => { formIdealQtyDirty = true; });
-  document.getElementById('f-category').addEventListener('change', e => {
-    const cat = e.target.value;
-    if (intervalEl && !formIntervalDirty) intervalEl.value = CATEGORY_DEFAULTS[cat] || '';
-    if (idealQtyEl && !formIdealQtyDirty) idealQtyEl.value = QUANTITY_DEFAULTS[cat] || '';
-  });
-
-  const deleteBtn = document.getElementById('form-delete-btn');
-  if (deleteBtn) deleteBtn.addEventListener('click', handleDelete);
-}
-
-function collectFormData() {
-  const statusBtn = document.querySelector('.form-status-btn.active');
-  const status = statusBtn ? statusBtn.dataset.status : 'owned';
-  const isOwned = status === 'owned';
-
-  const name     = document.getElementById('f-name').value.trim();
-  const brand    = document.getElementById('f-brand').value.trim();
-  const category = document.getElementById('f-category').value;
-  const priceRaw = document.getElementById('f-price').value;
-  const size     = document.getElementById('f-size').value.trim();
-  const url      = document.getElementById('f-url').value.trim();
-  const notes    = document.getElementById('f-notes').value.trim();
-  const seasons  = [...document.querySelectorAll('.form-season-pill.active')].map(p => p.dataset.season);
-
-  const obj = { status, category, name, brand, seasons };
-  if (url)  obj.url   = url;
-  if (size) obj.size  = size;
-  if (priceRaw !== '') obj.price = parseFloat(priceRaw);
-  if (notes) obj.notes = notes;
-
-  if (isOwned) {
-    const date     = document.getElementById('f-date').value;
-    const interval = document.getElementById('f-interval').value;
-    const qty      = document.getElementById('f-qty').value;
-    const idealQty = document.getElementById('f-ideal-qty').value;
-    if (date)     obj.datePurchased          = date;
-    if (interval) obj.replacementIntervalDays = parseInt(interval, 10);
-    if (qty !== '')      obj.quantity      = parseInt(qty, 10);
-    if (idealQty !== '') obj.idealQuantity = parseInt(idealQty, 10);
-  }
-
-  return obj;
-}
-
-function handleSave() {
-  const data = collectFormData();
-
-  if (!data.name)           { alert('Name is required.');           return; }
-  if (!data.brand)          { alert('Brand is required.');          return; }
-  if (!data.seasons.length) { alert('Select at least one season.'); return; }
-
-  if (editingId) {
-    const idx = items.findIndex(i => i.id === editingId);
-    if (idx >= 0) items[idx] = { id: editingId, ...data };
-  } else {
-    items.push({ id: generateId(), ...data });
-  }
-
-  closeModal();
-  renderList();
-  downloadJSON();
-}
-
-function handleDelete() {
-  const item = items.find(i => i.id === editingId);
-  if (!item) return;
-  if (!confirm(`Delete "${item.name}"?`)) return;
-  items = items.filter(i => i.id !== editingId);
-  closeModal();
-  renderList();
-  downloadJSON();
-}
 
 // ── Event wiring ──────────────────────────────────────────
 
@@ -585,35 +336,6 @@ document.getElementById('drawer-reset-btn').addEventListener('click', () => {
   updateFilterDot();
 });
 
-// Item list — edit + delete (delegated)
-document.getElementById('item-list').addEventListener('click', e => {
-  const editBtn   = e.target.closest('.item-edit-btn');
-  const deleteBtn = e.target.closest('.item-delete-btn');
-
-  if (editBtn) {
-    openModal(editBtn.dataset.id);
-    return;
-  }
-
-  if (deleteBtn) {
-    const id = deleteBtn.dataset.id;
-    const item = items.find(i => i.id === id);
-    if (!item || !confirm(`Delete "${item.name}"?`)) return;
-    items = items.filter(i => i.id !== id);
-    renderList();
-    downloadJSON();
-  }
-});
-
-// FAB
-document.getElementById('fab').addEventListener('click', () => openModal(null));
-
-// Modal
-document.getElementById('modal-cancel-btn').addEventListener('click', closeModal);
-document.getElementById('modal-save-btn').addEventListener('click', handleSave);
-document.getElementById('modal-backdrop').addEventListener('click', e => {
-  if (e.target === document.getElementById('modal-backdrop')) closeModal();
-});
 
 // ── Init ──────────────────────────────────────────────────
 
