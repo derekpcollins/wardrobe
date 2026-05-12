@@ -1,0 +1,652 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --bg: #f5f5f7;
+  --surface: #ffffff;
+  --border: #e5e7eb;
+  --text: #111827;
+  --text-muted: #6b7280;
+  --text-faint: #9ca3af;
+  --accent: #111827;
+  --overdue-color: #dc2626;
+  --overdue-bg: #fef2f2;
+  --soon-color: #b45309;
+  --soon-bg: #fffbeb;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* { scrollbar-width: none; -ms-overflow-style: none; }
+*::-webkit-scrollbar { display: none; }
+
+/* ── App shell ─────────────────────────────────────────── */
+
+#app {
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 100%;
+  position: relative;
+}
+
+/* ── Persistent notice ─────────────────────────────────── */
+
+#notice {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: #1c1c1e;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  font-size: 11px;
+  font-weight: 400;
+  padding: 5px 16px;
+  padding-bottom: max(5px, env(safe-area-inset-bottom));
+  line-height: 1.4;
+}
+
+/* ── Filter bar ────────────────────────────────────────── */
+
+#filter-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 16px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+}
+
+.filter-row--seasons {
+  align-items: center;
+}
+
+.filter-row--toggles {
+  gap: 8px;
+}
+
+.filter-row--scroll {
+  overflow-x: auto;
+}
+
+/* ── Season / Category pills ───────────────────────────── */
+
+.pill-group {
+  display: flex;
+  gap: 6px;
+  flex-wrap: nowrap;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 13px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 100ms, color 100ms, border-color 100ms;
+  user-select: none;
+  line-height: 1;
+}
+
+.pill.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* ── Status / Replacement toggles ──────────────────────── */
+
+.toggle-group {
+  display: flex;
+  background: var(--border);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.toggle-btn {
+  flex: 1;
+  height: 30px;
+  border: none;
+  background: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background 100ms, color 100ms, box-shadow 100ms;
+  font-family: inherit;
+  padding: 0 4px;
+}
+
+.toggle-btn.active {
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}
+
+/* ── Brand select ──────────────────────────────────────── */
+
+.brand-select {
+  flex: 1;
+  height: 34px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 13px;
+  font-family: inherit;
+  padding: 0 28px 0 10px;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+/* ── Reset button ──────────────────────────────────────── */
+
+.reset-btn {
+  flex-shrink: 0;
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 6px;
+  font-family: inherit;
+  white-space: nowrap;
+  transition: color 100ms;
+}
+
+.reset-btn:hover { color: var(--text); }
+
+/* ── Main content ──────────────────────────────────────── */
+
+#main {
+  padding: 16px 16px 120px;
+}
+
+/* ── Category groups ───────────────────────────────────── */
+
+.category-group {
+  margin-bottom: 28px;
+}
+
+.category-header {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 8px;
+  padding-left: 4px;
+}
+
+/* ── Item cards ────────────────────────────────────────── */
+
+.item-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 8px;
+  overflow: hidden;
+  transition: box-shadow 100ms;
+}
+
+.item-card-main {
+  display: flex;
+  align-items: flex-start;
+  padding: 14px 12px 14px 16px;
+  gap: 10px;
+}
+
+.item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.item-top-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 3px;
+  flex-wrap: wrap;
+}
+
+.item-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.item-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-faint);
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: color 100ms;
+  line-height: 1;
+  padding: 2px;
+}
+
+.item-link:hover { color: var(--text); }
+
+.item-meta {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.item-seasons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.season-chip {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 100px;
+  background: var(--bg);
+  color: var(--text-muted);
+  font-weight: 500;
+  border: 1px solid var(--border);
+}
+
+.item-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+.item-notes {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-top: 3px;
+}
+
+/* ── Want to Try ───────────────────────────────────────── */
+
+.item-card--want {
+  border: 1.5px dashed var(--border);
+  box-shadow: none;
+}
+
+.item-card--want .item-name {
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.badge-want {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--bg);
+  color: var(--text-faint);
+  border: 1px solid var(--border);
+}
+
+/* ── Replacement badges ────────────────────────────────── */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge-overdue {
+  background: var(--overdue-bg);
+  color: var(--overdue-color);
+}
+
+.badge-replace-soon {
+  background: var(--soon-bg);
+  color: var(--soon-color);
+}
+
+/* ── Item action buttons ───────────────────────────────── */
+
+.item-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  padding-top: 1px;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: none;
+  color: var(--text-faint);
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 0;
+  transition: background 100ms, color 100ms;
+}
+
+.icon-btn:hover {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.icon-btn--delete:hover {
+  background: var(--overdue-bg);
+  color: var(--overdue-color);
+}
+
+/* ── FAB ───────────────────────────────────────────────── */
+
+#fab {
+  position: fixed;
+  bottom: max(48px, calc(30px + env(safe-area-inset-bottom)));
+  right: max(20px, calc(50% - 280px));
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+  font-family: inherit;
+}
+
+#fab:active { transform: scale(0.93); }
+
+/* ── Modal / Bottom sheet ──────────────────────────────── */
+
+#modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+#modal-backdrop.hidden { display: none; }
+
+#modal {
+  background: var(--bg);
+  border-radius: 20px 20px 0 0;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
+  animation: sheet-up 260ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@keyframes sheet-up {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+#modal-handle {
+  width: 36px;
+  height: 4px;
+  background: #d1d5db;
+  border-radius: 2px;
+  margin: 12px auto 0;
+}
+
+#modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+#modal-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+#modal-cancel-btn {
+  border: none;
+  background: none;
+  font-size: 15px;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-family: inherit;
+  transition: color 100ms;
+}
+
+#modal-cancel-btn:hover { color: var(--text); }
+
+#modal-save-btn {
+  border: none;
+  background: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+#modal-body {
+  padding: 20px 16px 8px;
+}
+
+/* ── Form ──────────────────────────────────────────────── */
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  height: 44px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 15px;
+  font-family: inherit;
+  padding: 0 12px;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color 100ms;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--accent);
+}
+
+.form-textarea {
+  height: 80px;
+  padding: 10px 12px;
+  resize: none;
+  line-height: 1.5;
+}
+
+.form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* Status toggle */
+.form-status-toggle {
+  display: flex;
+  background: var(--border);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+  margin-bottom: 20px;
+}
+
+.form-status-btn {
+  flex: 1;
+  height: 40px;
+  border: none;
+  background: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 100ms, color 100ms, box-shadow 100ms;
+  font-family: inherit;
+}
+
+.form-status-btn.active {
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}
+
+/* Season pills in form */
+.form-seasons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.form-season-pill {
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 100ms, color 100ms, border-color 100ms;
+  user-select: none;
+  font-family: inherit;
+}
+
+.form-season-pill.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* Delete button */
+.btn-delete {
+  width: 100%;
+  height: 44px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--overdue-bg);
+  color: var(--overdue-color);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  margin-top: 8px;
+  transition: opacity 120ms;
+}
+
+.btn-delete:hover { opacity: 0.8; }
+
+/* ── States ────────────────────────────────────────────── */
+
+.empty-state {
+  text-align: center;
+  padding: 60px 24px;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+.loading {
+  text-align: center;
+  padding: 60px 24px;
+  color: var(--text-muted);
+  font-size: 15px;
+}
