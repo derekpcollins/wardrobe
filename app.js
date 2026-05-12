@@ -270,6 +270,7 @@ function renderItemCard(item) {
       <div class="item-card-main">
         <div class="item-icon" aria-hidden="true">
           <i class="fa-sharp fa-light ${faIcon}"></i>
+          ${item.colorHex ? `<span class="item-color-swatch" style="background:${esc(item.colorHex)}"></span>` : ''}
         </div>
         <div class="item-info">
           <div class="item-top-row">
