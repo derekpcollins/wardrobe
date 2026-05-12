@@ -224,36 +224,38 @@ function renderItemCard(item) {
     item.price != null ? `$${item.price}` : null,
   ].filter(Boolean);
 
-  const seasons = (item.seasons || [])
-    .map(s => `<span class="season-chip">${SEASON_LABELS[s] || s}</span>`)
-    .join('');
-
-  const badges = [];
-  if (isWant) badges.push('<span class="badge badge-want">Want to Try</span>');
-  if (repStatus === 'overdue') badges.push('<span class="badge badge-overdue">Overdue</span>');
-  if (repStatus === 'replace-soon') badges.push('<span class="badge badge-replace-soon">Replace Soon</span>');
+  // Replacement status + qty — shown inline on the right of the top row
+  const inlineParts = [];
+  if (repStatus === 'overdue') inlineParts.push('<span class="badge badge-overdue">Overdue</span>');
+  if (repStatus === 'replace-soon') inlineParts.push('<span class="badge badge-replace-soon">Replace Soon</span>');
 
   const qtyStatus = getQtyStatus(item);
   if (qtyStatus === 'empty') {
-    badges.push(`<span class="badge badge-overdue">${item.quantity} / ${item.idealQuantity}</span>`);
+    inlineParts.push(`<span class="badge badge-overdue">${item.quantity} / ${item.idealQuantity}</span>`);
   } else if (qtyStatus === 'low') {
-    badges.push(`<span class="badge badge-replace-soon">${item.quantity} / ${item.idealQuantity}</span>`);
+    inlineParts.push(`<span class="badge badge-replace-soon">${item.quantity} / ${item.idealQuantity}</span>`);
   } else if (qtyStatus === 'ok') {
-    badges.push(`<span class="item-qty">${item.quantity} / ${item.idealQuantity}</span>`);
+    inlineParts.push(`<span class="item-qty">${item.quantity} / ${item.idealQuantity}</span>`);
   }
+
+  // Status badge — shown below meta
+  const rowBadges = [];
+  if (isWant) rowBadges.push('<span class="badge badge-want">Want to Try</span>');
 
   return `
     <div class="item-card ${isWant ? 'item-card--want' : ''}">
       <div class="item-card-main">
         <div class="item-info">
           <div class="item-top-row">
-            <span class="item-name">${esc(item.name)}</span>
-            ${linkIcon}
+            <div class="item-name-group">
+              <span class="item-name">${esc(item.name)}</span>
+              ${linkIcon}
+            </div>
+            ${inlineParts.length ? `<div class="item-top-right">${inlineParts.join('')}</div>` : ''}
           </div>
           ${metaParts.length ? `<div class="item-meta">${esc(metaParts.join(' · '))}</div>` : ''}
-          ${seasons ? `<div class="item-seasons">${seasons}</div>` : ''}
-          ${badges.length ? `<div class="item-badges">${badges.join('')}</div>` : ''}
           ${item.notes ? `<div class="item-notes">${esc(item.notes)}</div>` : ''}
+          ${rowBadges.length ? `<div class="item-badges">${rowBadges.join('')}</div>` : ''}
         </div>
       </div>
     </div>

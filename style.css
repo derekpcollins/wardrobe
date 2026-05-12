@@ -414,10 +414,24 @@ html, body {
 
 .item-top-row {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 3px;
+}
+
+.item-name-group {
+  display: flex;
   align-items: baseline;
   gap: 6px;
-  margin-bottom: 3px;
-  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.item-top-right {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
 }
 
 .item-name {
