@@ -413,20 +413,21 @@ html, body {
 }
 
 .item-icon {
+  position: relative;
   width: 40px;
   height: 40px;
   flex-shrink: 0;
-  position: relative;
-  color: #444;
+  overflow: visible;
 }
 
 .item-icon i {
-  font-size: 40px;
+  font-size: 32px;
   width: 40px;
   height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
+  line-height: 40px;
+  text-align: center;
+  color: #444;
 }
 
 .item-color-swatch {
