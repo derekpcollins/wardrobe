@@ -110,9 +110,9 @@ html, body {
   font-size: 18px;
 }
 
-.fa-sliders-up svg {
-  width: 20px !important;
-  height: auto !important;
+.filter-btn .svg-inline--fa {
+  width: 20px;
+  height: auto;
 }
 
 .season-select-overlay {
