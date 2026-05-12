@@ -112,6 +112,7 @@ html, body {
 
 .fa-sliders-up svg {
   width: 20px;
+  height: auto;
 }
 
 .season-select-overlay {
@@ -431,8 +432,8 @@ html, body {
 }
 
 .item-icon svg {
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   display: block;
 }
 
@@ -534,7 +535,7 @@ html, body {
 }
 
 .item-notes {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--text-muted);
   line-height: 1.4;
   margin-top: 3px;

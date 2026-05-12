@@ -175,10 +175,10 @@ function renderDrawer() {
     </button>
   `).join('');
 
-  // Retiring
+  // Retire
   document.getElementById('drawer-retiring').innerHTML = `
     <button class="toggle-btn ${filters.retiring ? 'active' : ''}" data-retiring="true">
-      Retiring
+      Retire
     </button>
   `;
 
@@ -270,7 +270,7 @@ function renderItemCard(item) {
   } else if (qtyStatus === 'low') {
     conditionBadge = '<span class="badge badge-running-low">Low</span>';
   } else if (item.retiring) {
-    conditionBadge = '<span class="badge badge-retiring">Retiring</span>';
+    conditionBadge = '<span class="badge badge-retiring">Retire</span>';
   }
 
   // Status badge (Want to Try only — not subject to priority)
