@@ -251,27 +251,33 @@ function renderItemCard(item) {
       </a>`
     : '';
 
+  const qtyStatus = getQtyStatus(item);
+
   const metaParts = [
     item.brand,
     item.size ? `Size ${item.size}` : null,
+    item.color || null,
     item.price != null ? `$${item.price.toFixed(2)}` : null,
+    (!isWant && item.quantity != null && item.idealQuantity != null)
+      ? `${item.quantity} / ${item.idealQuantity}`
+      : null,
   ].filter(Boolean);
 
-  // Replacement status — shown inline on the right of the top row
-  const inlineParts = [];
-  if (repStatus === 'overdue') inlineParts.push('<span class="badge badge-overdue">Overdue</span>');
-  if (repStatus === 'replace-soon') inlineParts.push('<span class="badge badge-replace-soon">Replace Soon</span>');
+  // Single highest-priority condition badge
+  let conditionBadge = null;
+  if (repStatus === 'overdue') {
+    conditionBadge = '<span class="badge badge-overdue">Overdue</span>';
+  } else if (repStatus === 'replace-soon') {
+    conditionBadge = '<span class="badge badge-replace-soon">Replace Soon</span>';
+  } else if (qtyStatus === 'low') {
+    conditionBadge = '<span class="badge badge-running-low">Running Low</span>';
+  } else if (item.retiring) {
+    conditionBadge = '<span class="badge badge-retiring">Retiring</span>';
+  }
 
-  // Badges shown below notes
+  // Status badge (Want to Try only — not subject to priority)
   const rowBadges = [];
   if (isWant) rowBadges.push('<span class="badge badge-want">Want to Try</span>');
-  if (item.retiring) rowBadges.push('<span class="badge badge-retiring">Retiring</span>');
-
-  // Quantity shown below notes
-  const qtyStatus = getQtyStatus(item);
-  const qtyRow = (!isWant && item.quantity != null && item.idealQuantity != null)
-    ? `<div class="item-qty-row">${item.quantity} of ${item.idealQuantity}</div>`
-    : '';
 
   const faIcon = getItemIcon(item.name);
 
@@ -288,11 +294,10 @@ function renderItemCard(item) {
               <span class="item-name">${esc(item.name)}</span>
               ${linkIcon}
             </div>
-            ${inlineParts.length ? `<div class="item-top-right">${inlineParts.join('')}</div>` : ''}
+            ${conditionBadge ? `<div class="item-top-right">${conditionBadge}</div>` : ''}
           </div>
           ${metaParts.length ? `<div class="item-meta">${esc(metaParts.join(' · '))}</div>` : ''}
           ${item.notes ? `<div class="item-notes">${esc(item.notes)}</div>` : ''}
-          ${qtyRow}
           ${rowBadges.length ? `<div class="item-badges">${rowBadges.join('')}</div>` : ''}
         </div>
       </div>
