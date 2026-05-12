@@ -269,7 +269,7 @@ function renderItemCard(item) {
     <div class="item-card ${isWant ? 'item-card--want' : ''}">
       <div class="item-card-main">
         <div class="item-icon" aria-hidden="true">
-          <i class="fa-thin ${faIcon}"></i>
+          <i class="fa-sharp fa-light ${faIcon}"></i>
         </div>
         <div class="item-info">
           <div class="item-top-row">
