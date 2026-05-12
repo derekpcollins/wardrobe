@@ -255,7 +255,7 @@ function renderItemCard(item) {
 
   const metaHtmlParts = [
     item.brand ? esc(item.brand) : null,
-    item.size ? `Size ${esc(item.size)}` : null,
+    item.size ? esc(item.size) : null,
     item.color ? esc(item.color) : null,
     item.price != null ? `$${item.price.toFixed(2)}` : null,
     qtyPart,
