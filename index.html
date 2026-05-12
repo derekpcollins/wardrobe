@@ -6,28 +6,36 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <title>Wardrobe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div id="app">
 
-    <header id="filter-bar">
-      <div class="filter-row filter-row--seasons">
-        <div class="pill-group" id="season-filters"></div>
-        <button id="reset-btn" class="reset-btn">Reset</button>
-      </div>
-      <div class="filter-row filter-row--toggles">
-        <div class="toggle-group" id="status-filter"></div>
-        <div class="toggle-group" id="replacement-filter"></div>
-      </div>
-      <div class="filter-row filter-row--scroll">
-        <div class="pill-group" id="category-filters"></div>
-      </div>
-      <div class="filter-row">
-        <select id="brand-filter" class="brand-select">
-          <option value="">All Brands</option>
+    <header id="header">
+      <div class="season-selector-wrap">
+        <h1 class="season-h1" id="season-h1">
+          <span id="season-name">Spring</span><span class="season-chevron"> &#9662;</span>
+        </h1>
+        <select class="season-select-overlay" id="season-select" aria-label="Select season">
+          <option value="spring">Spring</option>
+          <option value="summer">Summer</option>
+          <option value="fall">Fall</option>
+          <option value="winter">Winter</option>
         </select>
       </div>
+      <button class="filter-icon-btn" id="filter-btn" aria-label="Open filters">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/>
+          <line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/>
+          <line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/>
+          <line x1="17" y1="16" x2="23" y2="16"/>
+        </svg>
+        <span class="filter-dot" id="filter-dot"></span>
+      </button>
     </header>
 
     <main id="main">
@@ -51,6 +59,41 @@
     </div>
 
   </div>
+
+  <!-- Filter drawer — outside #app so it isn't clipped by max-width -->
+  <div id="drawer-backdrop" class="hidden"></div>
+  <aside id="filter-drawer" aria-label="Filters">
+    <div class="drawer-header">
+      <h3 class="drawer-title">Filters</h3>
+      <button class="drawer-close-btn" id="drawer-close-btn" aria-label="Close filters">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="drawer-body">
+      <div class="drawer-section">
+        <div class="drawer-section-label">Status</div>
+        <div class="toggle-group" id="drawer-status"></div>
+      </div>
+      <div class="drawer-section">
+        <div class="drawer-section-label">Replacement</div>
+        <div class="toggle-group" id="drawer-replacement"></div>
+      </div>
+      <div class="drawer-section">
+        <div class="drawer-section-label">Category</div>
+        <div class="pill-group" id="drawer-categories"></div>
+      </div>
+      <div class="drawer-section">
+        <div class="drawer-section-label">Brand</div>
+        <select id="drawer-brand" class="brand-select drawer-brand-select"></select>
+      </div>
+    </div>
+    <div class="drawer-footer">
+      <button class="drawer-reset-btn" id="drawer-reset-btn">Reset</button>
+      <button class="drawer-apply-btn" id="drawer-apply-btn">Apply</button>
+    </div>
+  </aside>
 
   <div id="notice">Changes download as wardrobe.json &mdash; replace in repo to save permanently</div>
 

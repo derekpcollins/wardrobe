@@ -36,8 +36,8 @@ const CATEGORY_DEFAULTS = {
 let items = [];
 
 let filters = {
-  seasons: [],
-  status: 'all',       // 'all' | 'owned' | 'want-to-try'
+  season: '',           // single string — set to current season on init
+  status: 'owned',     // 'all' | 'owned' | 'want-to-try'
   replacement: 'all',  // 'all' | 'replace-soon' | 'overdue'
   categories: [],
   brand: '',
@@ -106,7 +106,7 @@ function downloadJSON() {
 
 function getFilteredItems() {
   return items.filter(item => {
-    if (filters.seasons.length > 0 && !item.seasons.some(s => filters.seasons.includes(s))) return false;
+    if (filters.season && !item.seasons.includes(filters.season)) return false;
     if (filters.status !== 'all' && item.status !== filters.status) return false;
     if (filters.replacement !== 'all' && getReplacementStatus(item) !== filters.replacement) return false;
     if (filters.categories.length > 0 && !filters.categories.includes(item.category)) return false;
@@ -115,52 +115,81 @@ function getFilteredItems() {
   });
 }
 
-// ── Render: filters ───────────────────────────────────────
+// ── Render: season H1 ─────────────────────────────────────
 
-function renderFilters() {
-  // Season pills
-  document.getElementById('season-filters').innerHTML = SEASONS.map(s => `
-    <button class="pill ${filters.seasons.includes(s) ? 'active' : ''}" data-season="${s}">
-      ${SEASON_LABELS[s]}
-    </button>
-  `).join('');
+function renderSeasonH1() {
+  const season = filters.season;
+  document.getElementById('season-name').textContent = SEASON_LABELS[season] || season;
+  document.getElementById('season-select').value = season;
 
-  // Status toggle
-  document.getElementById('status-filter').innerHTML = [
-    { value: 'all',          label: 'All' },
-    { value: 'owned',        label: 'Owned' },
-    { value: 'want-to-try',  label: 'Want to Try' },
+  const h1 = document.getElementById('season-h1');
+  SEASONS.forEach(s => h1.classList.remove(`season--${s}`));
+  if (season) h1.classList.add(`season--${season}`);
+}
+
+// ── Render: filter dot ────────────────────────────────────
+
+function isFilterActive() {
+  return filters.status !== 'owned' ||
+         filters.replacement !== 'all' ||
+         filters.categories.length > 0 ||
+         filters.brand !== '';
+}
+
+function updateFilterDot() {
+  document.getElementById('filter-dot').style.display = isFilterActive() ? 'block' : 'none';
+}
+
+// ── Render: drawer ────────────────────────────────────────
+
+function renderDrawer() {
+  // Status
+  document.getElementById('drawer-status').innerHTML = [
+    { value: 'all',         label: 'All' },
+    { value: 'owned',       label: 'Owned' },
+    { value: 'want-to-try', label: 'Want to Try' },
   ].map(o => `
     <button class="toggle-btn ${filters.status === o.value ? 'active' : ''}" data-status="${o.value}">
       ${o.label}
     </button>
   `).join('');
 
-  // Replacement toggle
-  document.getElementById('replacement-filter').innerHTML = [
-    { value: 'all',           label: 'All' },
-    { value: 'replace-soon',  label: 'Soon' },
-    { value: 'overdue',       label: 'Overdue' },
+  // Replacement
+  document.getElementById('drawer-replacement').innerHTML = [
+    { value: 'all',          label: 'All' },
+    { value: 'replace-soon', label: 'Soon' },
+    { value: 'overdue',      label: 'Overdue' },
   ].map(o => `
     <button class="toggle-btn ${filters.replacement === o.value ? 'active' : ''}" data-replacement="${o.value}">
       ${o.label}
     </button>
   `).join('');
 
-  // Category pills
-  document.getElementById('category-filters').innerHTML = CATEGORIES.map(c => `
+  // Categories
+  document.getElementById('drawer-categories').innerHTML = CATEGORIES.map(c => `
     <button class="pill ${filters.categories.includes(c) ? 'active' : ''}" data-category="${c}">
       ${CATEGORY_LABELS[c]}
     </button>
   `).join('');
 
-  // Brand dropdown
+  // Brand
   const brands = [...new Set(items.map(i => i.brand).filter(Boolean))].sort();
-  const brandEl = document.getElementById('brand-filter');
-  const prev = brandEl.value;
-  brandEl.innerHTML = '<option value="">All Brands</option>' +
+  document.getElementById('drawer-brand').innerHTML =
+    '<option value="">All Brands</option>' +
     brands.map(b => `<option value="${esc(b)}" ${filters.brand === b ? 'selected' : ''}>${esc(b)}</option>`).join('');
-  if (brands.includes(prev)) brandEl.value = prev;
+}
+
+// ── Drawer open / close ───────────────────────────────────
+
+function openDrawer() {
+  renderDrawer();
+  document.getElementById('filter-drawer').classList.add('open');
+  document.getElementById('drawer-backdrop').classList.remove('hidden');
+}
+
+function closeDrawer() {
+  document.getElementById('filter-drawer').classList.remove('open');
+  document.getElementById('drawer-backdrop').classList.add('hidden');
 }
 
 // ── Render: item list ─────────────────────────────────────
@@ -373,7 +402,6 @@ function buildForm(item) {
     });
   }
 
-  // Delete button
   const deleteBtn = document.getElementById('form-delete-btn');
   if (deleteBtn) deleteBtn.addEventListener('click', handleDelete);
 }
@@ -383,14 +411,14 @@ function collectFormData() {
   const status = statusBtn ? statusBtn.dataset.status : 'owned';
   const isOwned = status === 'owned';
 
-  const name    = document.getElementById('f-name').value.trim();
-  const brand   = document.getElementById('f-brand').value.trim();
+  const name     = document.getElementById('f-name').value.trim();
+  const brand    = document.getElementById('f-brand').value.trim();
   const category = document.getElementById('f-category').value;
   const priceRaw = document.getElementById('f-price').value;
-  const size    = document.getElementById('f-size').value.trim();
-  const url     = document.getElementById('f-url').value.trim();
-  const notes   = document.getElementById('f-notes').value.trim();
-  const seasons = [...document.querySelectorAll('.form-season-pill.active')].map(p => p.dataset.season);
+  const size     = document.getElementById('f-size').value.trim();
+  const url      = document.getElementById('f-url').value.trim();
+  const notes    = document.getElementById('f-notes').value.trim();
+  const seasons  = [...document.querySelectorAll('.form-season-pill.active')].map(p => p.dataset.season);
 
   const obj = { status, category, name, brand, seasons };
   if (url)  obj.url   = url;
@@ -401,7 +429,7 @@ function collectFormData() {
   if (isOwned) {
     const date     = document.getElementById('f-date').value;
     const interval = document.getElementById('f-interval').value;
-    if (date)     obj.datePurchased         = date;
+    if (date)     obj.datePurchased          = date;
     if (interval) obj.replacementIntervalDays = parseInt(interval, 10);
   }
 
@@ -411,9 +439,9 @@ function collectFormData() {
 function handleSave() {
   const data = collectFormData();
 
-  if (!data.name)            { alert('Name is required.');                    return; }
-  if (!data.brand)           { alert('Brand is required.');                   return; }
-  if (!data.seasons.length)  { alert('Select at least one season.');          return; }
+  if (!data.name)           { alert('Name is required.');           return; }
+  if (!data.brand)          { alert('Brand is required.');          return; }
+  if (!data.seasons.length) { alert('Select at least one season.'); return; }
 
   if (editingId) {
     const idx = items.findIndex(i => i.id === editingId);
@@ -423,7 +451,6 @@ function handleSave() {
   }
 
   closeModal();
-  renderFilters();
   renderList();
   downloadJSON();
 }
@@ -434,69 +461,86 @@ function handleDelete() {
   if (!confirm(`Delete "${item.name}"?`)) return;
   items = items.filter(i => i.id !== editingId);
   closeModal();
-  renderFilters();
   renderList();
   downloadJSON();
 }
 
 // ── Event wiring ──────────────────────────────────────────
 
-// Season pills (filter bar)
-document.getElementById('season-filters').addEventListener('click', e => {
-  const btn = e.target.closest('.pill');
-  if (!btn || !btn.dataset.season) return;
-  const s = btn.dataset.season;
-  filters.seasons = filters.seasons.includes(s)
-    ? filters.seasons.filter(x => x !== s)
-    : [...filters.seasons, s];
-  renderFilters();
+// Season select
+document.getElementById('season-select').addEventListener('change', e => {
+  filters.season = e.target.value;
+  renderSeasonH1();
   renderList();
 });
 
-// Status toggle
-document.getElementById('status-filter').addEventListener('click', e => {
-  const btn = e.target.closest('.toggle-btn');
-  if (!btn || !btn.dataset.status) return;
+// Filter icon → open drawer
+document.getElementById('filter-btn').addEventListener('click', openDrawer);
+
+// Drawer close
+document.getElementById('drawer-close-btn').addEventListener('click', closeDrawer);
+document.getElementById('drawer-backdrop').addEventListener('click', closeDrawer);
+document.getElementById('drawer-apply-btn').addEventListener('click', closeDrawer);
+
+// Drawer — status toggle (live)
+document.getElementById('drawer-status').addEventListener('click', e => {
+  const btn = e.target.closest('.toggle-btn[data-status]');
+  if (!btn) return;
   filters.status = btn.dataset.status;
-  renderFilters();
+  document.querySelectorAll('#drawer-status .toggle-btn').forEach(b =>
+    b.classList.toggle('active', b === btn)
+  );
   renderList();
+  updateFilterDot();
 });
 
-// Replacement toggle
-document.getElementById('replacement-filter').addEventListener('click', e => {
-  const btn = e.target.closest('.toggle-btn');
-  if (!btn || !btn.dataset.replacement) return;
+// Drawer — replacement toggle (live)
+document.getElementById('drawer-replacement').addEventListener('click', e => {
+  const btn = e.target.closest('.toggle-btn[data-replacement]');
+  if (!btn) return;
   filters.replacement = btn.dataset.replacement;
-  renderFilters();
+  document.querySelectorAll('#drawer-replacement .toggle-btn').forEach(b =>
+    b.classList.toggle('active', b === btn)
+  );
   renderList();
+  updateFilterDot();
 });
 
-// Category pills
-document.getElementById('category-filters').addEventListener('click', e => {
-  const btn = e.target.closest('.pill');
-  if (!btn || !btn.dataset.category) return;
+// Drawer — category chips (live)
+document.getElementById('drawer-categories').addEventListener('click', e => {
+  const btn = e.target.closest('.pill[data-category]');
+  if (!btn) return;
   const c = btn.dataset.category;
-  filters.categories = filters.categories.includes(c)
-    ? filters.categories.filter(x => x !== c)
-    : [...filters.categories, c];
-  renderFilters();
+  if (filters.categories.includes(c)) {
+    filters.categories = filters.categories.filter(x => x !== c);
+    btn.classList.remove('active');
+  } else {
+    filters.categories.push(c);
+    btn.classList.add('active');
+  }
   renderList();
+  updateFilterDot();
 });
 
-// Brand select
-document.getElementById('brand-filter').addEventListener('change', e => {
+// Drawer — brand (live)
+document.getElementById('drawer-brand').addEventListener('change', e => {
   filters.brand = e.target.value;
   renderList();
+  updateFilterDot();
 });
 
-// Reset
-document.getElementById('reset-btn').addEventListener('click', () => {
-  filters = { seasons: [getCurrentSeason()], status: 'all', replacement: 'all', categories: [], brand: '' };
-  renderFilters();
+// Drawer — reset
+document.getElementById('drawer-reset-btn').addEventListener('click', () => {
+  filters.status = 'owned';
+  filters.replacement = 'all';
+  filters.categories = [];
+  filters.brand = '';
+  renderDrawer();
   renderList();
+  updateFilterDot();
 });
 
-// Item list: edit + delete buttons (delegated)
+// Item list — edit + delete (delegated)
 document.getElementById('item-list').addEventListener('click', e => {
   const editBtn   = e.target.closest('.item-edit-btn');
   const deleteBtn = e.target.closest('.item-delete-btn');
@@ -511,7 +555,6 @@ document.getElementById('item-list').addEventListener('click', e => {
     const item = items.find(i => i.id === id);
     if (!item || !confirm(`Delete "${item.name}"?`)) return;
     items = items.filter(i => i.id !== id);
-    renderFilters();
     renderList();
     downloadJSON();
   }
@@ -520,7 +563,7 @@ document.getElementById('item-list').addEventListener('click', e => {
 // FAB
 document.getElementById('fab').addEventListener('click', () => openModal(null));
 
-// Modal controls
+// Modal
 document.getElementById('modal-cancel-btn').addEventListener('click', closeModal);
 document.getElementById('modal-save-btn').addEventListener('click', handleSave);
 document.getElementById('modal-backdrop').addEventListener('click', e => {
@@ -537,8 +580,9 @@ async function init() {
       '<div class="empty-state">Failed to load wardrobe data.</div>';
     return;
   }
-  filters.seasons = [getCurrentSeason()];
-  renderFilters();
+  filters.season = getCurrentSeason();
+  renderSeasonH1();
+  updateFilterDot();
   renderList();
 }
 
