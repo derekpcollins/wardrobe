@@ -119,6 +119,7 @@ html, body {
 }
 
 /* Season colors */
+.season-h1.season--all    { color: #4b5563; }
 .season-h1.season--spring { color: #2e7d32; }
 .season-h1.season--summer { color: #a06a00; }
 .season-h1.season--fall   { color: #8b3a10; }
@@ -421,8 +422,8 @@ html, body {
 }
 
 .item-color-swatch {
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   border: 1.5px solid #aaaaaa;
   flex-shrink: 0;
@@ -562,6 +563,21 @@ html, body {
 .badge-qty-ok {
   background: var(--bg);
   color: var(--text-faint);
+}
+
+.badge-retiring {
+  background: #f0eef8;
+  color: #6b5e8a;
+}
+
+.item-qty-row {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+.drawer-retiring-group {
+  margin-top: 8px;
 }
 
 .item-qty {

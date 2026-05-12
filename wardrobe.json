@@ -6,16 +6,21 @@
     "name": "Nike Pro Men's Dri-FIT Fitness Shorts",
     "brand": "Nike",
     "url": "https://www.nike.com/t/pro-mens-dri-fit-fitness-shorts-LR6CBd/FB7958-010",
-    "price": 34.00,
+    "price": 34,
     "size": "L",
     "color": "Black",
     "colorHex": "#1a1a1a",
-    "seasons": ["spring", "summer", "fall"],
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 730,
     "quantity": 2,
     "idealQuantity": 5,
-    "notes": ""
+    "notes": "",
+    "retiring": false
   },
   {
     "id": "nike-pro-dri-fit-tights",
@@ -24,16 +29,21 @@
     "name": "Nike Pro Men's Dri-FIT 3/4-Length Fitness Tights",
     "brand": "Nike",
     "url": "https://www.nike.com/t/pro-mens-dri-fit-3-4-length-fitness-tights-7tnCt4/FB7950-010",
-    "price": 37.00,
+    "price": 37,
     "size": "L",
     "color": "Black",
     "colorHex": "#1a1a1a",
-    "seasons": ["spring", "fall", "winter"],
+    "seasons": [
+      "spring",
+      "fall",
+      "winter"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 730,
     "quantity": 3,
     "idealQuantity": 3,
-    "notes": ""
+    "notes": "",
+    "retiring": false
   },
   {
     "id": "vrst-recharge-pebble-hoodie",
@@ -42,16 +52,21 @@
     "name": "VRST Men's Recharge Pebble Hoodie",
     "brand": "VRST",
     "url": "https://www.dickssportinggoods.com/p/vrst-mens-recharge-pebble-hoodie-25krmmrchrgpbblhdmpd/25krmmrchrgpbblhdmpd?sku=27357292",
-    "price": 88.00,
+    "price": 88,
     "size": "M",
     "color": "Olive Green Heather",
     "colorHex": "#6b7c4a",
-    "seasons": ["spring", "fall", "winter"],
+    "seasons": [
+      "spring",
+      "fall",
+      "winter"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 1095,
     "quantity": 2,
     "idealQuantity": 2,
-    "notes": "On sale price was $20.98."
+    "notes": "On sale price was $20.98.",
+    "retiring": false
   },
   {
     "id": "vrst-icon-tee-black",
@@ -60,16 +75,22 @@
     "name": "VRST Men's Icon Short Sleeve Tee",
     "brand": "VRST",
     "url": "https://www.dickssportinggoods.com/p/vrst-mens-icon-short-sleeve-tee-22krmmcrththrxxxxmpd/22krmmcrththrxxxxmpd?sku=24134629",
-    "price": 38.00,
+    "price": 38,
     "size": "M",
     "color": "Pure Black",
     "colorHex": "#1a1a1a",
-    "seasons": ["spring", "summer", "fall", "winter"],
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 730,
     "quantity": 1,
     "idealQuantity": 1,
-    "notes": "I really like these shirts, but now that I've gained a little weight, they're just a bit tight."
+    "notes": "I really like these shirts, but now that I've gained a little weight, they're just a bit tight.",
+    "retiring": false
   },
   {
     "id": "vrst-icon-tee-khaki",
@@ -78,16 +99,22 @@
     "name": "VRST Men's Icon Short Sleeve Tee",
     "brand": "VRST",
     "url": "https://www.dickssportinggoods.com/p/vrst-mens-icon-short-sleeve-tee-22krmmcrththrxxxxmpd/22krmmcrththrxxxxmpd?sku=24134629",
-    "price": 38.00,
+    "price": 38,
     "size": "M",
     "color": "Khaki Sand Heather",
     "colorHex": "#b5a882",
-    "seasons": ["spring", "summer", "fall", "winter"],
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 730,
     "quantity": 1,
     "idealQuantity": 1,
-    "notes": "I really like these shirts, but now that I've gained a little weight, they're just a bit tight."
+    "notes": "I really like these shirts, but now that I've gained a little weight, they're just a bit tight.",
+    "retiring": false
   },
   {
     "id": "vrst-icon-tee-gray",
@@ -96,16 +123,22 @@
     "name": "VRST Men's Icon Short Sleeve Tee",
     "brand": "VRST",
     "url": "https://www.dickssportinggoods.com/p/vrst-mens-icon-short-sleeve-tee-22krmmcrththrxxxxmpd/22krmmcrththrxxxxmpd?sku=24134629",
-    "price": 38.00,
+    "price": 38,
     "size": "M",
     "color": "Light Grey Heather",
     "colorHex": "#c4c4c4",
-    "seasons": ["spring", "summer", "fall", "winter"],
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 730,
     "quantity": 1,
     "idealQuantity": 1,
-    "notes": "I really like these shirts, but now that I've gained a little weight, they're just a bit tight."
+    "notes": "I really like these shirts, but now that I've gained a little weight, they're just a bit tight.",
+    "retiring": false
   },
   {
     "id": "vrst-recharge-quarter-zip",
@@ -114,16 +147,21 @@
     "name": "VRST Men's Recharge Pebble Fleece 1/4 Zip",
     "brand": "VRST",
     "url": "https://www.dickssportinggoods.com/p/vrst-mens-recharge-pebble-1-4-zip-24krmmrchrgpbbl14mpd/24krmmrchrgpbbl14mpd?color=Light%20Sand%20Heather",
-    "price": 88.00,
+    "price": 88,
     "size": "M",
     "color": "Palomino Gold Heather",
     "colorHex": "#c4a55a",
-    "seasons": ["spring", "fall", "winter"],
+    "seasons": [
+      "spring",
+      "fall",
+      "winter"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 1095,
     "quantity": 1,
     "idealQuantity": 2,
-    "notes": "On sale price was $17.23."
+    "notes": "On sale price was $17.23.",
+    "retiring": false
   },
   {
     "id": "vrst-limitless-jogger-olive",
@@ -132,16 +170,22 @@
     "name": "VRST Men's Limitless Performance Slim Fit Jogger",
     "brand": "VRST",
     "url": "https://www.dickssportinggoods.com/p/vrst-mens-limitless-slim-fit-jogger-24krmmlmtlssjggrsmpd/24krmmlmtlssjggrsmpd?color=Olive%20Green",
-    "price": 88.00,
+    "price": 88,
     "size": "M",
     "color": "Olive Green",
     "colorHex": "#6b7c4a",
-    "seasons": ["spring", "summer", "fall", "winter"],
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 1095,
     "quantity": 4,
     "idealQuantity": 4,
-    "notes": ""
+    "notes": "",
+    "retiring": false
   },
   {
     "id": "vrst-pinnacle-hoodie-black",
@@ -150,16 +194,21 @@
     "name": "VRST Men's Pinnacle Fleece Hoodie",
     "brand": "VRST",
     "url": "https://www.dickssportinggoods.com/p/vrst-mens-pinnacle-hoodie-25vrsmcasuscbhdxxxedb/25vrsmcasuscbhdxxxedb?color=Coral",
-    "price": 88.00,
+    "price": 88,
     "size": "M",
     "color": "Pure Black",
     "colorHex": "#1a1a1a",
-    "seasons": ["spring", "fall", "winter"],
+    "seasons": [
+      "spring",
+      "fall",
+      "winter"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 1095,
     "quantity": 2,
     "idealQuantity": 2,
-    "notes": ""
+    "notes": "",
+    "retiring": false
   },
   {
     "id": "vrst-pinnacle-hoodie-yellow",
@@ -168,16 +217,21 @@
     "name": "VRST Men's Pinnacle Fleece Hoodie",
     "brand": "VRST",
     "url": "https://www.dickssportinggoods.com/p/vrst-mens-pinnacle-hoodie-25vrsmcasuscbhdxxxedb/25vrsmcasuscbhdxxxedb?color=Coral",
-    "price": 88.00,
+    "price": 88,
     "size": "M",
     "color": "Dark Yellow",
     "colorHex": "#c9a800",
-    "seasons": ["spring", "fall", "winter"],
+    "seasons": [
+      "spring",
+      "fall",
+      "winter"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 1095,
     "quantity": 1,
     "idealQuantity": 1,
-    "notes": ""
+    "notes": "",
+    "retiring": false
   },
   {
     "id": "express-supersoft-tee-black",
@@ -186,16 +240,22 @@
     "name": "Express 3-Pack Supersoft Crew Neck T-Shirt",
     "brand": "Express",
     "url": "https://www.express.com/clothing/men/3-pack-supersoft-crew-neck-t-shirts/pro/05052023/color/Pitch%20Black/e/regular/",
-    "price": 64.00,
+    "price": 64,
     "size": "M",
     "color": "Black",
     "colorHex": "#1a1a1a",
-    "seasons": ["spring", "summer", "fall", "winter"],
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 730,
     "quantity": 3,
     "idealQuantity": 3,
-    "notes": "Purchased as a 3-pack. On sale price was $48."
+    "notes": "Purchased as a 3-pack. On sale price was $48.",
+    "retiring": false
   },
   {
     "id": "express-supersoft-tee-white",
@@ -204,16 +264,22 @@
     "name": "Express 3-Pack Supersoft Crew Neck T-Shirt",
     "brand": "Express",
     "url": "https://www.express.com/clothing/men/3-pack-supersoft-crew-neck-t-shirts/pro/05052023/color/Pitch%20Black/e/regular/",
-    "price": 64.00,
+    "price": 64,
     "size": "M",
     "color": "White",
     "colorHex": "#f5f5f5",
-    "seasons": ["spring", "summer", "fall", "winter"],
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 730,
     "quantity": 3,
     "idealQuantity": 3,
-    "notes": "Purchased as a 3-pack. On sale price was $48."
+    "notes": "Purchased as a 3-pack. On sale price was $48.",
+    "retiring": false
   },
   {
     "id": "express-pima-tee-black",
@@ -222,16 +288,22 @@
     "name": "Express Perfect Pima Cotton Crew Neck T-Shirt",
     "brand": "Express",
     "url": "https://www.express.com/clothing/men/perfect-pima-cotton-crew-neck-t-shirt/pro/04779555/color/Pitch%20Black/e/regular/",
-    "price": 38.00,
+    "price": 38,
     "size": "M",
     "color": "Pitch Black",
     "colorHex": "#1a1a1a",
-    "seasons": ["spring", "summer", "fall", "winter"],
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 730,
     "quantity": 1,
     "idealQuantity": 3,
-    "notes": "Really like these shirts. Not sure if M or L is the right size. On sale price was $28.50."
+    "notes": "Really like these shirts. Not sure if M or L is the right size. On sale price was $28.50.",
+    "retiring": false
   },
   {
     "id": "express-skinny-jeans-medium-wash",
@@ -240,16 +312,22 @@
     "name": "Express Skinny Medium Wash Stretch Jeans",
     "brand": "Express",
     "url": "https://www.express.com/clothing/men/skinny-medium-wash-stretch-jeans/pro/03328525/color/Light%20Wash/",
-    "price": 88.00,
+    "price": 88,
     "size": "32x32",
     "color": "Medium Wash",
     "colorHex": "#3d5a80",
-    "seasons": ["spring", "summer", "fall", "winter"],
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 1095,
     "quantity": 2,
     "idealQuantity": 2,
-    "notes": "Fit fine, but not as well as the 4-way stretch version. On sale price was $66."
+    "notes": "Fit fine, but not as well as the 4-way stretch version. On sale price was $66.",
+    "retiring": false
   },
   {
     "id": "express-skinny-jeans-gray-4way",
@@ -258,16 +336,22 @@
     "name": "Express Skinny Gray 4-Way Hyper Stretch Jeans",
     "brand": "Express",
     "url": "https://www.express.com/clothing/men/skinny-gray-4-way-hyper-stretch-jeans/pro/03327909/color/Gray/",
-    "price": 88.00,
+    "price": 88,
     "size": "32x32",
     "color": "Gray",
     "colorHex": "#808080",
-    "seasons": ["spring", "summer", "fall", "winter"],
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 1095,
     "quantity": 2,
     "idealQuantity": 2,
-    "notes": "Favorite jeans right now. On sale price was $66."
+    "notes": "Favorite jeans right now. On sale price was $66.",
+    "retiring": false
   },
   {
     "id": "express-skinny-jeans-lightwash-4way",
@@ -276,16 +360,22 @@
     "name": "Express Skinny Light Wash 4-Way Hyper Stretch Jeans",
     "brand": "Express",
     "url": "https://www.express.com/clothing/men/skinny-gray-4-way-hyper-stretch-jeans/pro/03327909/color/Gray/",
-    "price": 88.00,
+    "price": 88,
     "size": "32x32",
     "color": "Light Wash",
     "colorHex": "#89afd4",
-    "seasons": ["spring", "summer", "fall", "winter"],
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 1095,
     "quantity": 1,
     "idealQuantity": 2,
-    "notes": "Favorite jeans right now. On sale price was $66."
+    "notes": "Favorite jeans right now. On sale price was $66.",
+    "retiring": false
   },
   {
     "id": "uniqlo-colorful-50-socks-gray",
@@ -294,16 +384,19 @@
     "name": "Uniqlo Colorful 50 Socks",
     "brand": "Uniqlo",
     "url": "https://www.uniqlo.com/us/en/products/E482605-000/00?colorDisplayCode=06&sizeDisplayCode=027",
-    "price": 4.90,
+    "price": 4.9,
     "size": null,
     "color": "Gray",
     "colorHex": "#808080",
-    "seasons": ["winter"],
+    "seasons": [
+      "winter"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 365,
     "quantity": 3,
     "idealQuantity": 3,
-    "notes": "Fine, not great. Would prefer to find a different go-to winter sock."
+    "notes": "Fine, not great. Would prefer to find a different go-to winter sock.",
+    "retiring": false
   },
   {
     "id": "uniqlo-sports-socks-black-feb",
@@ -312,16 +405,21 @@
     "name": "Uniqlo Sports Short Socks",
     "brand": "Uniqlo",
     "url": "https://www.uniqlo.com/us/en/products/E471958-000/00?colorDisplayCode=09&sizeDisplayCode=027",
-    "price": 5.90,
+    "price": 5.9,
     "size": null,
     "color": "Black",
     "colorHex": "#1a1a1a",
-    "seasons": ["spring", "summer", "fall"],
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
     "datePurchased": "2025-02-15",
     "replacementIntervalDays": 180,
     "quantity": 2,
     "idealQuantity": 2,
-    "notes": "Holes in the heels — needs immediate replacement."
+    "notes": "Holes in the heels — needs immediate replacement.",
+    "retiring": false
   },
   {
     "id": "uniqlo-sports-socks-black-mar",
@@ -330,16 +428,21 @@
     "name": "Uniqlo Sports Short Socks",
     "brand": "Uniqlo",
     "url": "https://www.uniqlo.com/us/en/products/E471958-000/00?colorDisplayCode=09&sizeDisplayCode=027",
-    "price": 5.90,
+    "price": 5.9,
     "size": null,
     "color": "Black",
     "colorHex": "#1a1a1a",
-    "seasons": ["spring", "summer", "fall"],
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
     "datePurchased": "2025-03-06",
     "replacementIntervalDays": 180,
     "quantity": 2,
     "idealQuantity": 2,
-    "notes": "Wearing out. Favorite everyday socks up until winter."
+    "notes": "Wearing out. Favorite everyday socks up until winter.",
+    "retiring": false
   },
   {
     "id": "uniqlo-sports-socks-white",
@@ -348,16 +451,21 @@
     "name": "Uniqlo Sports Short Socks",
     "brand": "Uniqlo",
     "url": "https://www.uniqlo.com/us/en/products/E471958-000/00?colorDisplayCode=09&sizeDisplayCode=027",
-    "price": 5.90,
+    "price": 5.9,
     "size": null,
     "color": "White",
     "colorHex": "#f5f5f5",
-    "seasons": ["spring", "summer", "fall"],
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
     "datePurchased": "2025-04-23",
     "replacementIntervalDays": 180,
     "quantity": 2,
     "idealQuantity": 4,
-    "notes": "Would like more white pairs. Favorite everyday socks up until winter."
+    "notes": "Would like more white pairs. Favorite everyday socks up until winter.",
+    "retiring": false
   },
   {
     "id": "uniqlo-sports-socks-gray",
@@ -366,16 +474,21 @@
     "name": "Uniqlo Sports Short Socks",
     "brand": "Uniqlo",
     "url": "https://www.uniqlo.com/us/en/products/E471958-000/00?colorDisplayCode=09&sizeDisplayCode=027",
-    "price": 5.90,
+    "price": 5.9,
     "size": null,
     "color": "Gray",
     "colorHex": "#808080",
-    "seasons": ["spring", "summer", "fall"],
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
     "datePurchased": "2025-03-06",
     "replacementIntervalDays": 180,
     "quantity": 1,
     "idealQuantity": 0,
-    "notes": "Don't like the gray — won't repurchase this color."
+    "notes": "Don't like the gray — won't repurchase this color.",
+    "retiring": false
   },
   {
     "id": "saxx-vibe-trunk-black",
@@ -384,16 +497,22 @@
     "name": "Saxx Vibe Xtra Soft Comfort Trunk 3\"",
     "brand": "Saxx",
     "url": "https://www.saxxunderwear.com/products/sxpp2xt_blg",
-    "price": 68.00,
+    "price": 68,
     "size": "L",
     "color": "Black",
     "colorHex": "#1a1a1a",
-    "seasons": ["spring", "summer", "fall", "winter"],
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 180,
     "quantity": 3,
     "idealQuantity": 10,
-    "notes": "Favorite boxers. Need more! Price is for a 3-pack."
+    "notes": "Favorite boxers. Need more! Price is for a 3-pack.",
+    "retiring": false
   },
   {
     "id": "saxx-vibe-trunk-gray",
@@ -402,16 +521,22 @@
     "name": "Saxx Vibe Xtra Soft Comfort Trunk 3\"",
     "brand": "Saxx",
     "url": "https://www.saxxunderwear.com/products/sxpp2xt_blg",
-    "price": 68.00,
+    "price": 68,
     "size": "L",
     "color": "Gray",
     "colorHex": "#808080",
-    "seasons": ["spring", "summer", "fall", "winter"],
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 180,
     "quantity": 3,
     "idealQuantity": 10,
-    "notes": "Favorite boxers. Need more! Price is for a 3-pack."
+    "notes": "Favorite boxers. Need more! Price is for a 3-pack.",
+    "retiring": false
   },
   {
     "id": "patagonia-tech-web-belt",
@@ -420,16 +545,22 @@
     "name": "Patagonia Tech Web Belt",
     "brand": "Patagonia",
     "url": "https://www.patagonia.com/product/tech-web-belt/59194.html",
-    "price": 39.00,
+    "price": 39,
     "size": null,
     "color": "Forge Grey",
     "colorHex": "#707070",
-    "seasons": ["spring", "summer", "fall", "winter"],
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 1825,
     "quantity": 2,
     "idealQuantity": 3,
-    "notes": "Go-to everyday belt. Have two in the same color — ended up with a duplicate after losing one temporarily. Would like other colors but not urgent."
+    "notes": "Go-to everyday belt. Have two in the same color — ended up with a duplicate after losing one temporarily. Would like other colors but not urgent.",
+    "retiring": false
   },
   {
     "id": "fresh-clean-threads-crew-black",
@@ -438,16 +569,22 @@
     "name": "Fresh Clean Threads Crew Neck Tee",
     "brand": "Fresh Clean Threads",
     "url": "https://freshcleantees.com/products/black-crew-neck?variant=40308927529035",
-    "price": 23.00,
+    "price": 23,
     "size": "M",
     "color": "Black",
     "colorHex": "#1a1a1a",
-    "seasons": ["spring", "summer", "fall", "winter"],
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 365,
     "quantity": 7,
     "idealQuantity": 7,
-    "notes": "Was go-to everyday tee but Express holds up better. Now used primarily for workouts. Love the fit but they look worn after just a few washes."
+    "notes": "Was go-to everyday tee but Express holds up better. Now used primarily for workouts. Love the fit but they look worn after just a few washes.",
+    "retiring": false
   },
   {
     "id": "fresh-clean-threads-crew-white",
@@ -456,16 +593,22 @@
     "name": "Fresh Clean Threads Crew Neck Tee",
     "brand": "Fresh Clean Threads",
     "url": "https://freshcleantees.com/products/black-crew-neck?variant=40308927529035",
-    "price": 23.00,
+    "price": 23,
     "size": "M",
     "color": "White",
     "colorHex": "#f5f5f5",
-    "seasons": ["spring", "summer", "fall", "winter"],
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 365,
     "quantity": 3,
     "idealQuantity": 3,
-    "notes": "Was go-to everyday tee but Express holds up better. Now used primarily for workouts. Love the fit but they look worn after just a few washes."
+    "notes": "Was go-to everyday tee but Express holds up better. Now used primarily for workouts. Love the fit but they look worn after just a few washes.",
+    "retiring": false
   },
   {
     "id": "nike-c1ty-shoes",
@@ -474,16 +617,22 @@
     "name": "Nike C1TY Shoes",
     "brand": "Nike",
     "url": "https://www.nike.com/t/c1ty-shoes-w1HpcCgA/HV4302-078",
-    "price": 105.00,
+    "price": 105,
     "size": "11",
     "color": "White/Gray/Gum",
     "colorHex": "#f5f5f5",
-    "seasons": ["spring", "summer", "fall", "winter"],
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 730,
     "quantity": 1,
     "idealQuantity": 1,
-    "notes": "Go-to everyday shoe. On sale price was $63.97."
+    "notes": "Go-to everyday shoe. On sale price was $63.97.",
+    "retiring": false
   },
   {
     "id": "merrell-nova-3-tactical",
@@ -492,15 +641,21 @@
     "name": "Merrell Men's Nova 3 Tactical Shoes",
     "brand": "Merrell",
     "url": "https://www.merrell.com/US/en/nova-3-tactical/56435M.html",
-    "price": 140.00,
+    "price": 140,
     "size": "11",
     "color": "Olive",
     "colorHex": "#6b7c4a",
-    "seasons": ["spring", "summer", "fall", "winter"],
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
     "datePurchased": null,
     "replacementIntervalDays": 730,
     "quantity": 1,
     "idealQuantity": 1,
-    "notes": "Outdoor, hiking, shooting shoe. Really like them."
+    "notes": "Outdoor, hiking, shooting shoe. Really like them.",
+    "retiring": false
   }
 ]

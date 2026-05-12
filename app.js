@@ -16,10 +16,11 @@ const CATEGORY_LABELS = {
 const SEASONS = ['spring', 'summer', 'fall', 'winter'];
 
 const SEASON_LABELS = {
-  spring: 'Spring',
-  summer: 'Summer',
-  fall: 'Fall',
-  winter: 'Winter',
+  '':      'All Seasons',
+  spring:  'Spring',
+  summer:  'Summer',
+  fall:    'Fall',
+  winter:  'Winter',
 };
 
 const ICON_RULES = [
@@ -45,6 +46,7 @@ let filters = {
   season: '',           // single string — set to current season on init
   status: 'owned',     // 'all' | 'owned' | 'want-to-try'
   replacement: 'all',  // 'all' | 'replace-soon' | 'overdue'
+  retiring: false,
   categories: [],
   brand: '',
 };
@@ -114,6 +116,7 @@ function getFilteredItems() {
     if (filters.season && !item.seasons.includes(filters.season)) return false;
     if (filters.status !== 'all' && item.status !== filters.status) return false;
     if (filters.replacement !== 'all' && getReplacementStatus(item) !== filters.replacement) return false;
+    if (filters.retiring && !item.retiring) return false;
     if (filters.categories.length > 0 && !filters.categories.includes(item.category)) return false;
     if (filters.brand && item.brand !== filters.brand) return false;
     return true;
@@ -129,7 +132,8 @@ function renderSeasonH1() {
 
   const h1 = document.getElementById('season-h1');
   SEASONS.forEach(s => h1.classList.remove(`season--${s}`));
-  if (season) h1.classList.add(`season--${season}`);
+  h1.classList.remove('season--all');
+  h1.classList.add(season ? `season--${season}` : 'season--all');
 }
 
 // ── Render: filter dot ────────────────────────────────────
@@ -137,6 +141,7 @@ function renderSeasonH1() {
 function isFilterActive() {
   return filters.status !== 'owned' ||
          filters.replacement !== 'all' ||
+         filters.retiring ||
          filters.categories.length > 0 ||
          filters.brand !== '';
 }
@@ -169,6 +174,13 @@ function renderDrawer() {
       ${o.label}
     </button>
   `).join('');
+
+  // Retiring
+  document.getElementById('drawer-retiring').innerHTML = `
+    <button class="toggle-btn ${filters.retiring ? 'active' : ''}" data-retiring="true">
+      Retiring
+    </button>
+  `;
 
   // Categories
   document.getElementById('drawer-categories').innerHTML = CATEGORIES.map(c => `
@@ -242,26 +254,24 @@ function renderItemCard(item) {
   const metaParts = [
     item.brand,
     item.size ? `Size ${item.size}` : null,
-    item.price != null ? `$${item.price}` : null,
+    item.price != null ? `$${item.price.toFixed(2)}` : null,
   ].filter(Boolean);
 
-  // Replacement status + qty — shown inline on the right of the top row
+  // Replacement status — shown inline on the right of the top row
   const inlineParts = [];
   if (repStatus === 'overdue') inlineParts.push('<span class="badge badge-overdue">Overdue</span>');
   if (repStatus === 'replace-soon') inlineParts.push('<span class="badge badge-replace-soon">Replace Soon</span>');
 
-  const qtyStatus = getQtyStatus(item);
-  if (qtyStatus === 'empty') {
-    inlineParts.push(`<span class="badge badge-overdue">${item.quantity} / ${item.idealQuantity}</span>`);
-  } else if (qtyStatus === 'low') {
-    inlineParts.push(`<span class="badge badge-replace-soon">${item.quantity} / ${item.idealQuantity}</span>`);
-  } else if (qtyStatus === 'ok') {
-    inlineParts.push(`<span class="badge badge-qty-ok">${item.quantity} / ${item.idealQuantity}</span>`);
-  }
-
-  // Status badge — shown below meta
+  // Badges shown below notes
   const rowBadges = [];
   if (isWant) rowBadges.push('<span class="badge badge-want">Want to Try</span>');
+  if (item.retiring) rowBadges.push('<span class="badge badge-retiring">Retiring</span>');
+
+  // Quantity shown below notes
+  const qtyStatus = getQtyStatus(item);
+  const qtyRow = (!isWant && item.quantity != null && item.idealQuantity != null)
+    ? `<div class="item-qty-row">${item.quantity} of ${item.idealQuantity}</div>`
+    : '';
 
   const faIcon = getItemIcon(item.name);
 
@@ -282,6 +292,7 @@ function renderItemCard(item) {
           </div>
           ${metaParts.length ? `<div class="item-meta">${esc(metaParts.join(' · '))}</div>` : ''}
           ${item.notes ? `<div class="item-notes">${esc(item.notes)}</div>` : ''}
+          ${qtyRow}
           ${rowBadges.length ? `<div class="item-badges">${rowBadges.join('')}</div>` : ''}
         </div>
       </div>
@@ -354,10 +365,21 @@ document.getElementById('drawer-brand').addEventListener('change', e => {
   updateFilterDot();
 });
 
+// Drawer — retiring toggle (live)
+document.getElementById('drawer-retiring').addEventListener('click', e => {
+  const btn = e.target.closest('.toggle-btn[data-retiring]');
+  if (!btn) return;
+  filters.retiring = !filters.retiring;
+  btn.classList.toggle('active', filters.retiring);
+  renderList();
+  updateFilterDot();
+});
+
 // Drawer — reset
 document.getElementById('drawer-reset-btn').addEventListener('click', () => {
   filters.status = 'owned';
   filters.replacement = 'all';
+  filters.retiring = false;
   filters.categories = [];
   filters.brand = '';
   renderDrawer();
