@@ -31,6 +31,15 @@ const CATEGORY_DEFAULTS = {
   accessories: 1825,
 };
 
+const QUANTITY_DEFAULTS = {
+  basics: 7,
+  tops: 5,
+  bottoms: 3,
+  outerwear: 2,
+  footwear: 4,
+  accessories: 2,
+};
+
 // ── State ─────────────────────────────────────────────────
 
 let items = [];
@@ -45,6 +54,7 @@ let filters = {
 
 let editingId = null;
 let formIntervalDirty = false;
+let formIdealQtyDirty = false;
 
 // ── Utilities ─────────────────────────────────────────────
 
@@ -80,6 +90,14 @@ function esc(str) {
 
 function generateId() {
   return 'item-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+}
+
+function getQtyStatus(item) {
+  if (item.status === 'want-to-try') return null;
+  if (item.quantity == null || item.idealQuantity == null) return null;
+  if (item.quantity === 0) return 'empty';
+  if (item.quantity < item.idealQuantity) return 'low';
+  return 'ok';
 }
 
 // ── Data ──────────────────────────────────────────────────
@@ -249,6 +267,15 @@ function renderItemCard(item) {
   if (repStatus === 'overdue') badges.push('<span class="badge badge-overdue">Overdue</span>');
   if (repStatus === 'replace-soon') badges.push('<span class="badge badge-replace-soon">Replace Soon</span>');
 
+  const qtyStatus = getQtyStatus(item);
+  if (qtyStatus === 'empty') {
+    badges.push(`<span class="badge badge-overdue">${item.quantity} / ${item.idealQuantity}</span>`);
+  } else if (qtyStatus === 'low') {
+    badges.push(`<span class="badge badge-replace-soon">${item.quantity} / ${item.idealQuantity}</span>`);
+  } else if (qtyStatus === 'ok') {
+    badges.push(`<span class="item-qty">${item.quantity} / ${item.idealQuantity}</span>`);
+  }
+
   const pencilSvg = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`;
   const trashSvg = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>`;
 
@@ -282,7 +309,8 @@ function renderItemCard(item) {
 
 function openModal(id) {
   editingId = id || null;
-  formIntervalDirty = false;
+  formIntervalDirty  = false;
+  formIdealQtyDirty  = false;
   const item = id ? items.find(i => i.id === id) : null;
   document.getElementById('modal-title').textContent = item ? 'Edit Item' : 'Add Item';
   buildForm(item);
@@ -365,6 +393,19 @@ function buildForm(item) {
             placeholder="${intervalDefault}">
         </div>
       </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="f-qty">Quantity</label>
+          <input id="f-qty" class="form-input" type="number" min="0"
+            value="${item?.quantity ?? 1}" placeholder="1">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-ideal-qty">Ideal Quantity</label>
+          <input id="f-ideal-qty" class="form-input" type="number" min="1"
+            value="${item?.idealQuantity ?? QUANTITY_DEFAULTS[category]}"
+            placeholder="${QUANTITY_DEFAULTS[category]}">
+        </div>
+      </div>
     </div>
 
     <div class="form-group">
@@ -391,16 +432,16 @@ function buildForm(item) {
     pill.addEventListener('click', () => pill.classList.toggle('active'));
   });
 
-  // Category → auto-fill interval default (unless user touched it)
+  // Category → auto-fill interval and idealQty defaults (unless user touched them)
   const intervalEl = document.getElementById('f-interval');
-  if (intervalEl) {
-    intervalEl.addEventListener('input', () => { formIntervalDirty = true; });
-    document.getElementById('f-category').addEventListener('change', e => {
-      if (!formIntervalDirty) {
-        intervalEl.value = CATEGORY_DEFAULTS[e.target.value] || '';
-      }
-    });
-  }
+  const idealQtyEl = document.getElementById('f-ideal-qty');
+  if (intervalEl) intervalEl.addEventListener('input', () => { formIntervalDirty = true; });
+  if (idealQtyEl) idealQtyEl.addEventListener('input', () => { formIdealQtyDirty = true; });
+  document.getElementById('f-category').addEventListener('change', e => {
+    const cat = e.target.value;
+    if (intervalEl && !formIntervalDirty) intervalEl.value = CATEGORY_DEFAULTS[cat] || '';
+    if (idealQtyEl && !formIdealQtyDirty) idealQtyEl.value = QUANTITY_DEFAULTS[cat] || '';
+  });
 
   const deleteBtn = document.getElementById('form-delete-btn');
   if (deleteBtn) deleteBtn.addEventListener('click', handleDelete);
@@ -429,8 +470,12 @@ function collectFormData() {
   if (isOwned) {
     const date     = document.getElementById('f-date').value;
     const interval = document.getElementById('f-interval').value;
+    const qty      = document.getElementById('f-qty').value;
+    const idealQty = document.getElementById('f-ideal-qty').value;
     if (date)     obj.datePurchased          = date;
     if (interval) obj.replacementIntervalDays = parseInt(interval, 10);
+    if (qty !== '')      obj.quantity      = parseInt(qty, 10);
+    if (idealQty !== '') obj.idealQuantity = parseInt(idealQty, 10);
   }
 
   return obj;

@@ -11,6 +11,8 @@
     "seasons": ["spring", "summer", "fall", "winter"],
     "datePurchased": "2025-09-01",
     "replacementIntervalDays": 180,
+    "quantity": 3,
+    "idealQuantity": 7,
     "notes": "3-pack. White and gray."
   },
   {
@@ -24,7 +26,9 @@
     "size": "M",
     "seasons": ["spring", "summer", "fall", "winter"],
     "datePurchased": "2026-04-25",
-    "replacementIntervalDays": 180
+    "replacementIntervalDays": 180,
+    "quantity": 4,
+    "idealQuantity": 7
   },
   {
     "id": "item-003",
@@ -38,6 +42,8 @@
     "seasons": ["spring", "summer", "fall", "winter"],
     "datePurchased": "2026-03-01",
     "replacementIntervalDays": 180,
+    "quantity": 3,
+    "idealQuantity": 7,
     "notes": "3-pack."
   },
   {
@@ -50,7 +56,9 @@
     "size": "M",
     "seasons": ["fall", "winter"],
     "datePurchased": "2024-05-01",
-    "replacementIntervalDays": 730
+    "replacementIntervalDays": 730,
+    "quantity": 1,
+    "idealQuantity": 2
   },
   {
     "id": "item-005",
@@ -63,7 +71,9 @@
     "size": "M",
     "seasons": ["spring", "fall"],
     "datePurchased": "2024-06-01",
-    "replacementIntervalDays": 730
+    "replacementIntervalDays": 730,
+    "quantity": 2,
+    "idealQuantity": 3
   },
   {
     "id": "item-006",
@@ -75,7 +85,9 @@
     "size": "M",
     "seasons": ["fall", "winter"],
     "datePurchased": "2025-01-15",
-    "replacementIntervalDays": 730
+    "replacementIntervalDays": 730,
+    "quantity": 1,
+    "idealQuantity": 2
   },
   {
     "id": "item-007",
@@ -88,6 +100,8 @@
     "seasons": ["spring", "summer", "fall"],
     "datePurchased": "2022-06-01",
     "replacementIntervalDays": 1095,
+    "quantity": 1,
+    "idealQuantity": 2,
     "notes": "Khaki. Getting thin at the knees."
   },
   {
@@ -100,7 +114,9 @@
     "size": "32x30",
     "seasons": ["fall", "winter"],
     "datePurchased": "2024-09-15",
-    "replacementIntervalDays": 1095
+    "replacementIntervalDays": 1095,
+    "quantity": 1,
+    "idealQuantity": 2
   },
   {
     "id": "item-009",
@@ -113,7 +129,9 @@
     "size": "M",
     "seasons": ["fall", "winter"],
     "datePurchased": "2025-03-01",
-    "replacementIntervalDays": 1095
+    "replacementIntervalDays": 1095,
+    "quantity": 1,
+    "idealQuantity": 1
   },
   {
     "id": "item-010",
@@ -126,7 +144,9 @@
     "size": "M",
     "seasons": ["fall", "winter"],
     "datePurchased": "2022-10-01",
-    "replacementIntervalDays": 1825
+    "replacementIntervalDays": 1825,
+    "quantity": 1,
+    "idealQuantity": 2
   },
   {
     "id": "item-011",
@@ -140,6 +160,8 @@
     "seasons": ["spring", "fall"],
     "datePurchased": "2020-04-01",
     "replacementIntervalDays": 1825,
+    "quantity": 1,
+    "idealQuantity": 1,
     "notes": "DWR coating worn out. Needs re-treatment or replacement."
   },
   {
@@ -153,7 +175,9 @@
     "size": "11",
     "seasons": ["spring", "summer"],
     "datePurchased": "2025-05-15",
-    "replacementIntervalDays": 730
+    "replacementIntervalDays": 730,
+    "quantity": 1,
+    "idealQuantity": 2
   },
   {
     "id": "item-013",
@@ -166,6 +190,8 @@
     "seasons": ["spring", "summer", "fall"],
     "datePurchased": "2024-05-21",
     "replacementIntervalDays": 730,
+    "quantity": 0,
+    "idealQuantity": 1,
     "notes": "High mileage. Sole wearing through on the right."
   },
   {
@@ -179,6 +205,8 @@
     "seasons": ["spring", "summer", "fall", "winter"],
     "datePurchased": "2020-05-01",
     "replacementIntervalDays": 1825,
+    "quantity": 0,
+    "idealQuantity": 2,
     "notes": "Cracking near the buckle."
   },
   {
@@ -190,7 +218,9 @@
     "price": 28,
     "seasons": ["spring", "summer"],
     "datePurchased": "2024-06-01",
-    "replacementIntervalDays": 1825
+    "replacementIntervalDays": 1825,
+    "quantity": 2,
+    "idealQuantity": 2
   },
   {
     "id": "item-016",
