@@ -241,26 +241,24 @@ function renderItemCard(item) {
   const repStatus = getReplacementStatus(item);
   const isWant = item.status === 'want-to-try';
 
-  const linkIcon = item.url
-    ? `<a href="${esc(item.url)}" target="_blank" rel="noopener noreferrer" class="item-link" title="View item">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-          <polyline points="15 3 21 3 21 9"/>
-          <line x1="10" y1="14" x2="21" y2="3"/>
-        </svg>
-      </a>`
-    : '';
-
   const qtyStatus = getQtyStatus(item);
 
-  const metaParts = [
-    item.brand,
-    item.size ? `Size ${item.size}` : null,
-    item.color || null,
+  const itemNameEl = item.url
+    ? `<a href="${esc(item.url)}" target="_blank" rel="noopener noreferrer" class="item-name">${esc(item.name)}</a>`
+    : `<span class="item-name">${esc(item.name)}</span>`;
+
+  const qtyPart = (!isWant && item.quantity != null && item.idealQuantity != null)
+    ? (qtyStatus === 'low'
+        ? `<span class="meta-qty-low">${item.quantity} / ${item.idealQuantity}</span>`
+        : `${item.quantity} / ${item.idealQuantity}`)
+    : null;
+
+  const metaHtmlParts = [
+    item.brand ? esc(item.brand) : null,
+    item.size ? `Size ${esc(item.size)}` : null,
+    item.color ? esc(item.color) : null,
     item.price != null ? `$${item.price.toFixed(2)}` : null,
-    (!isWant && item.quantity != null && item.idealQuantity != null)
-      ? `${item.quantity} / ${item.idealQuantity}`
-      : null,
+    qtyPart,
   ].filter(Boolean);
 
   // Single highest-priority condition badge
@@ -270,7 +268,7 @@ function renderItemCard(item) {
   } else if (repStatus === 'replace-soon') {
     conditionBadge = '<span class="badge badge-replace-soon">Replace Soon</span>';
   } else if (qtyStatus === 'low') {
-    conditionBadge = '<span class="badge badge-running-low">Running Low</span>';
+    conditionBadge = '<span class="badge badge-running-low">Low</span>';
   } else if (item.retiring) {
     conditionBadge = '<span class="badge badge-retiring">Retiring</span>';
   }
@@ -291,12 +289,11 @@ function renderItemCard(item) {
         <div class="item-info">
           <div class="item-top-row">
             <div class="item-name-group">
-              <span class="item-name">${esc(item.name)}</span>
-              ${linkIcon}
+              ${itemNameEl}
             </div>
             ${conditionBadge ? `<div class="item-top-right">${conditionBadge}</div>` : ''}
           </div>
-          ${metaParts.length ? `<div class="item-meta">${esc(metaParts.join(' · '))}</div>` : ''}
+          ${metaHtmlParts.length ? `<div class="item-meta">${metaHtmlParts.join(' · ')}</div>` : ''}
           ${item.notes ? `<div class="item-notes">${esc(item.notes)}</div>` : ''}
           ${rowBadges.length ? `<div class="item-badges">${rowBadges.join('')}</div>` : ''}
         </div>
