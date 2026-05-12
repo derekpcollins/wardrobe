@@ -235,7 +235,7 @@ function renderItemCard(item) {
   } else if (qtyStatus === 'low') {
     inlineParts.push(`<span class="badge badge-replace-soon">${item.quantity} / ${item.idealQuantity}</span>`);
   } else if (qtyStatus === 'ok') {
-    inlineParts.push(`<span class="item-qty">${item.quantity} / ${item.idealQuantity}</span>`);
+    inlineParts.push(`<span class="badge badge-qty-ok">${item.quantity} / ${item.idealQuantity}</span>`);
   }
 
   // Status badge — shown below meta
