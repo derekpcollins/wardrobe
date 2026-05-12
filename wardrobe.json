@@ -2,7 +2,7 @@
   {
     "id": "nike-pro-dri-fit-shorts",
     "status": "owned",
-    "category": "bottoms",
+    "category": "basics",
     "name": "Nike Pro Men's Dri-FIT Fitness Shorts",
     "brand": "Nike",
     "url": "https://www.nike.com/t/pro-mens-dri-fit-fitness-shorts-LR6CBd/FB7958-010",
@@ -25,7 +25,7 @@
   {
     "id": "nike-pro-dri-fit-tights",
     "status": "owned",
-    "category": "bottoms",
+    "category": "basics",
     "name": "Nike Pro Men's Dri-FIT 3/4-Length Fitness Tights",
     "brand": "Nike",
     "url": "https://www.nike.com/t/pro-mens-dri-fit-3-4-length-fitness-tights-7tnCt4/FB7950-010",
@@ -231,7 +231,7 @@
     "quantity": 1,
     "idealQuantity": 1,
     "notes": "",
-    "retiring": false
+    "retiring": true
   },
   {
     "id": "express-supersoft-tee-black",
