@@ -22,6 +22,20 @@ const SEASON_LABELS = {
   winter: 'Winter',
 };
 
+const ICON_RULES = [
+  [/hoodie/i,                  'fa-user-hoodie'],
+  [/1\/4\s*zip|quarter.?zip/i, 'fa-shirt-long-sleeve'],
+  [/tee|t-shirt|crew.?neck/i,  'fa-shirt'],
+  [/shorts/i,                  'fa-shorts'],
+  [/tight|jogger/i,            'fa-pants'],
+  [/jean/i,                    'fa-jeans'],
+  [/sock/i,                    'fa-socks'],
+  [/trunk|brief|boxer/i,       'fa-briefs'],
+  [/sneaker|trainer/i,         'fa-sneaker'],
+  [/tactical|boot|hiking/i,    'fa-boot'],
+  [/shoe/i,                    'fa-sneaker'],
+];
+
 
 // ── State ─────────────────────────────────────────────────
 
@@ -68,6 +82,13 @@ function esc(str) {
     .replace(/"/g, '&quot;');
 }
 
+
+function getItemIcon(name) {
+  for (const [re, icon] of ICON_RULES) {
+    if (re.test(name)) return icon;
+  }
+  return 'fa-clothes-hanger';
+}
 
 function getQtyStatus(item) {
   if (item.status === 'want-to-try') return null;
@@ -242,9 +263,14 @@ function renderItemCard(item) {
   const rowBadges = [];
   if (isWant) rowBadges.push('<span class="badge badge-want">Want to Try</span>');
 
+  const faIcon = getItemIcon(item.name);
+
   return `
     <div class="item-card ${isWant ? 'item-card--want' : ''}">
       <div class="item-card-main">
+        <div class="item-icon" aria-hidden="true">
+          <i class="fa-thin ${faIcon}"></i>
+        </div>
         <div class="item-info">
           <div class="item-top-row">
             <div class="item-name-group">
