@@ -263,14 +263,14 @@ function renderItemCard(item) {
 
   // Single highest-priority condition badge
   let conditionBadge = null;
-  if (repStatus === 'overdue') {
+  if (item.retiring) {
+    conditionBadge = '<span class="badge badge-retiring">Retire</span>';
+  } else if (repStatus === 'overdue') {
     conditionBadge = '<span class="badge badge-overdue">Overdue</span>';
   } else if (repStatus === 'replace-soon') {
     conditionBadge = '<span class="badge badge-replace-soon">Replace Soon</span>';
   } else if (qtyStatus === 'low') {
     conditionBadge = '<span class="badge badge-running-low">Low</span>';
-  } else if (item.retiring) {
-    conditionBadge = '<span class="badge badge-retiring">Retire</span>';
   }
 
   // Status badge (Want to Try only — not subject to priority)
