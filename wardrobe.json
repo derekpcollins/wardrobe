@@ -465,7 +465,7 @@
     "quantity": 1,
     "idealQuantity": 0,
     "notes": "Don't like the gray — won't repurchase this color.",
-    "retiring": false
+    "retiring": true
   },
   {
     "id": "saxx-vibe-trunk-black",
