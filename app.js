@@ -303,6 +303,35 @@ function renderItemCard(item) {
 }
 
 
+// ── Dark mode ─────────────────────────────────────────────
+
+function isDarkActive() {
+  const attr = document.documentElement.getAttribute('data-theme');
+  if (attr) return attr === 'dark';
+  return window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
+
+function updateThemeIcon() {
+  const btn = document.getElementById('theme-toggle-btn');
+  const dark = isDarkActive();
+  btn.innerHTML = dark ? '<i class="fa-light fa-sun"></i>' : '<i class="fa-light fa-moon"></i>';
+  btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+}
+
+function toggleTheme() {
+  const newDark = !isDarkActive();
+  document.documentElement.setAttribute('data-theme', newDark ? 'dark' : 'light');
+  localStorage.setItem('theme', newDark ? 'dark' : 'light');
+  updateThemeIcon();
+}
+
+function initTheme() {
+  updateThemeIcon();
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if (!localStorage.getItem('theme')) updateThemeIcon();
+  });
+}
+
 // ── Event wiring ──────────────────────────────────────────
 
 // Season select
@@ -311,6 +340,9 @@ document.getElementById('season-select').addEventListener('change', e => {
   renderSeasonH1();
   renderList();
 });
+
+// Theme toggle
+document.getElementById('theme-toggle-btn').addEventListener('click', toggleTheme);
 
 // Filter icon → open drawer
 document.getElementById('filter-btn').addEventListener('click', openDrawer);
@@ -393,6 +425,7 @@ document.getElementById('drawer-reset-btn').addEventListener('click', () => {
 // ── Init ──────────────────────────────────────────────────
 
 async function init() {
+  initTheme();
   try {
     await loadData();
   } catch (err) {

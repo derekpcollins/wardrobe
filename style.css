@@ -6,20 +6,67 @@
 }
 
 :root {
-  --bg: #f5f5f7;
+  --bg: #ffffff;
   --surface: #ffffff;
-  --border: #e5e7eb;
-  --text: #111827;
-  --text-muted: #6b7280;
+  --border: #e5e5e5;
+  --text: #1a1a1a;
+  --text-muted: #6b7b8d;
   --text-faint: #9ca3af;
-  --accent: #111827;
+  --accent: #1a1a1a;
+  --accent-fg: #ffffff;
   --overdue-color: #dc2626;
   --overdue-bg: #fef2f2;
   --soon-color: #b45309;
   --soon-bg: #fffbeb;
+  --running-low-color: #c2410c;
+  --running-low-bg: #fff7ed;
+  --retiring-color: #6b5e8a;
+  --retiring-bg: #f0eef8;
   --radius: 12px;
   --radius-sm: 8px;
   --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121212;
+    --surface: #1e1e1e;
+    --border: #2e2e2e;
+    --text: #f0f0f0;
+    --text-muted: #9aa5b1;
+    --text-faint: #6b7280;
+    --accent: #e8e8e8;
+    --accent-fg: #1a1a1a;
+    --overdue-color: #f87171;
+    --overdue-bg: #3d1515;
+    --soon-color: #fbbf24;
+    --soon-bg: #3d2a00;
+    --running-low-color: #fb923c;
+    --running-low-bg: #3d2200;
+    --retiring-color: #c4b5fd;
+    --retiring-bg: #2a1f3d;
+    --shadow: 0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
+  }
+}
+
+[data-theme="dark"] {
+  --bg: #121212;
+  --surface: #1e1e1e;
+  --border: #2e2e2e;
+  --text: #f0f0f0;
+  --text-muted: #9aa5b1;
+  --text-faint: #6b7280;
+  --accent: #e8e8e8;
+  --accent-fg: #1a1a1a;
+  --overdue-color: #f87171;
+  --overdue-bg: #3d1515;
+  --soon-color: #fbbf24;
+  --soon-bg: #3d2a00;
+  --running-low-color: #fb923c;
+  --running-low-bg: #3d2200;
+  --retiring-color: #c4b5fd;
+  --retiring-bg: #2a1f3d;
+  --shadow: 0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
 }
 
 html, body {
@@ -135,6 +182,14 @@ html, body {
 .season-h1.season--fall   { color: #8b3a10; }
 .season-h1.season--winter { color: #1a3a6e; }
 
+/* ── Header action buttons ──────────────────────────────── */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
 /* ── Filter icon button ─────────────────────────────────── */
 
 .filter-icon-btn {
@@ -198,7 +253,7 @@ html, body {
 
 .pill.active {
   background: var(--accent);
-  color: #fff;
+  color: var(--accent-fg);
   border-color: var(--accent);
 }
 
@@ -268,7 +323,7 @@ html, body {
   right: 0;
   bottom: 0;
   width: min(320px, 85vw);
-  background: var(--bg);
+  background: var(--surface);
   z-index: 400;
   transform: translateX(100%);
   transition: transform 280ms cubic-bezier(0.32, 0.72, 0, 1);
@@ -369,7 +424,7 @@ html, body {
   border: none;
   border-radius: var(--radius-sm);
   background: var(--accent);
-  color: #fff;
+  color: var(--accent-fg);
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
@@ -424,11 +479,11 @@ html, body {
   height: 40px;
   flex-shrink: 0;
   overflow: visible;
-  color: #444;
+  color: var(--text);
 }
 
 .item-icon i {
-  color: #444;
+  color: var(--text);
 }
 
 .item-icon svg {
@@ -593,13 +648,13 @@ html, body {
 }
 
 .badge-running-low {
-  background: #fff7ed;
-  color: #c2410c;
+  background: var(--running-low-bg);
+  color: var(--running-low-color);
 }
 
 .badge-retiring {
-  background: #f0eef8;
-  color: #6b5e8a;
+  background: var(--retiring-bg);
+  color: var(--retiring-color);
 }
 
 .item-qty-row {
@@ -714,7 +769,7 @@ html, body {
 #modal-handle {
   width: 36px;
   height: 4px;
-  background: #d1d5db;
+  background: var(--border);
   border-radius: 2px;
   margin: 12px auto 0;
 }
@@ -872,7 +927,7 @@ html, body {
 
 .form-season-pill.active {
   background: var(--accent);
-  color: #fff;
+  color: var(--accent-fg);
   border-color: var(--accent);
 }
 
