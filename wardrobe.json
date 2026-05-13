@@ -463,7 +463,7 @@
     "datePurchased": "2025-03-06",
     "replacementIntervalDays": 180,
     "quantity": 1,
-    "idealQuantity": 0,
+    "idealQuantity": 1,
     "notes": "Don't like the gray — won't repurchase this color.",
     "retiring": true
   },
