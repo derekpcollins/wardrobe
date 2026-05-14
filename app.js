@@ -24,7 +24,7 @@ const SEASON_LABELS = {
 };
 
 const ICON_RULES = [
-  [/hoodie/i,                  'fa-user-hoodie'],
+  [/hoodie|hoody|jacket/i,     'fa-user-hoodie'],
   [/1\/4\s*zip|quarter.?zip/i, 'fa-shirt-long-sleeve'],
   [/tee|t-shirt|crew.?neck/i,  'fa-shirt'],
   [/shorts/i,                  'fa-shorts'],
