@@ -34,6 +34,7 @@ const ICON_RULES = [
   [/trunk|brief|boxer/i,       'fa-briefs'],
   [/sneaker|trainer/i,         'fa-sneaker'],
   [/tactical|boot|hiking/i,    'fa-boot'],
+  [/workout|metcon|gym|running/i, 'fa-sneaker-running'],
   [/shoe/i,                    'fa-sneaker'],
 ];
 
