@@ -634,5 +634,73 @@
     "idealQuantity": 1,
     "notes": "Outdoor, hiking, shooting shoe. Really like them.",
     "retiring": false
+  },
+  {
+    "id": "patagonia-nano-puff-jacket-mustard",
+    "status": "owned",
+    "category": "outerwear",
+    "name": "Patagonia Nano Puff® Jacket",
+    "brand": "Patagonia",
+    "url": "https://www.patagonia.com/product/mens-nano-puff-insulated-jacket/84213.html",
+    "price": 229,
+    "size": "M",
+    "color": "Mustard Yellow",
+    "colorHex": "#d4a017",
+    "seasons": [
+      "spring",
+      "fall",
+      "winter"
+    ],
+    "datePurchased": "2026-05-14",
+    "replacementIntervalDays": 1825,
+    "quantity": 1,
+    "idealQuantity": 1,
+    "notes": "Purchased used in 2025, in great condition.",
+    "retiring": false
+  },
+  {
+    "id": "patagonia-fitz-roy-down-hoody-orange",
+    "status": "owned",
+    "category": "outerwear",
+    "name": "Patagonia Fitz Roy Down Hoody",
+    "brand": "Patagonia",
+    "url": "https://www.patagonia.com/product/mens-fitz-roy-down-hoody/85500.html",
+    "price": 399,
+    "size": "M",
+    "color": "Burnt Orange",
+    "colorHex": "#cc5500",
+    "seasons": [
+      "winter"
+    ],
+    "datePurchased": "2026-05-14",
+    "replacementIntervalDays": 1825,
+    "quantity": 1,
+    "idealQuantity": 1,
+    "notes": "Purchased used in 2025, in great condition.",
+    "retiring": false
+  },
+  {
+    "id": "maamgic-5in-gym-shorts",
+    "status": "owned",
+    "category": "bottoms",
+    "name": "maamgic 5\" Gym Shorts",
+    "brand": "maamgic",
+    "url": "https://www.amazon.com/dp/B0B4ZKV6RK",
+    "price": 27.99,
+    "size": "L",
+    "color": "Mixed",
+    "colorHex": "#5a5a5a",
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "datePurchased": "2026-05-14",
+    "replacementIntervalDays": 1095,
+    "quantity": 5,
+    "idealQuantity": 6,
+    "notes": "Quantity: 5 (3 Heather Charcoal, 1 Grey, 1 Heather Green). Go-to gym shorts — look good, comfortable, hold up well. Between L and M sizing; have 1 pair in M that I like a bit more, may replace L's with M over time. Ideal quantity 5–7.",
+    "retiring": false
   }
 ]
