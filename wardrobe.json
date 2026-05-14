@@ -680,7 +680,7 @@
     "retiring": false
   },
   {
-    "id": "maamgic-gym-shorts-5in",
+    "id": "maamgic-gym-shorts-heather-charcoal",
     "status": "owned",
     "category": "bottoms",
     "name": "maamgic 5\" Gym Shorts",
@@ -698,9 +698,57 @@
     ],
     "datePurchased": "2026-05-14",
     "replacementIntervalDays": 1095,
-    "quantity": 5,
-    "idealQuantity": 7,
-    "notes": "Quantity: 5 (3 Heather Charcoal, 1 Grey, 1 Heather Green). Go-to gym shorts — look good, comfortable, hold up well. Between L and M sizing; have 1 pair in M that I like a bit more, may replace L's with M over time. Ideal quantity 5–7.",
+    "quantity": 3,
+    "idealQuantity": 3,
+    "notes": "Go-to gym shorts — look good, comfortable, hold up well. Between L and M sizing; have 1 pair in M that I like a bit more, may replace L's with M over time. Ideal quantity 5–7 total across all colors.",
+    "retiring": false
+  },
+  {
+    "id": "maamgic-gym-shorts-grey",
+    "status": "owned",
+    "category": "bottoms",
+    "name": "maamgic 5\" Gym Shorts",
+    "brand": "maamgic",
+    "url": "https://www.amazon.com/dp/B0B4ZKV6RK",
+    "price": 27.99,
+    "size": "L",
+    "color": "Grey",
+    "colorHex": "#808080",
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "datePurchased": "2026-05-14",
+    "replacementIntervalDays": 1095,
+    "quantity": 1,
+    "idealQuantity": 1,
+    "notes": "",
+    "retiring": false
+  },
+  {
+    "id": "maamgic-gym-shorts-heather-green",
+    "status": "owned",
+    "category": "bottoms",
+    "name": "maamgic 5\" Gym Shorts",
+    "brand": "maamgic",
+    "url": "https://www.amazon.com/dp/B0B4ZKV6RK",
+    "price": 27.99,
+    "size": "L",
+    "color": "Heather Green",
+    "colorHex": "#6e8a6e",
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "datePurchased": "2026-05-14",
+    "replacementIntervalDays": 1095,
+    "quantity": 1,
+    "idealQuantity": 1,
+    "notes": "",
     "retiring": false
   },
   {
