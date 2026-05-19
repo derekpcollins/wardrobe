@@ -101,12 +101,40 @@ function getQtyStatus(item) {
   return 'ok';
 }
 
+// ── Cache ─────────────────────────────────────────────────
+
+const CACHE_KEY    = 'wardrobe_cache';
+const CACHE_TS_KEY = 'wardrobe_cache_ts';
+const CACHE_TTL_MS = 24 * 60 * 60 * 1000;
+
+async function fetchAndCache() {
+  const res = await fetch('./wardrobe.json');
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const data = await res.json();
+  items = data;
+  try {
+    localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+    localStorage.setItem(CACHE_TS_KEY, String(Date.now()));
+  } catch (_) { /* storage full — skip caching */ }
+}
+
 // ── Data ──────────────────────────────────────────────────
 
 async function loadData() {
-  const res = await fetch('./wardrobe.json');
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  items = await res.json();
+  const ts  = localStorage.getItem(CACHE_TS_KEY);
+  const raw = localStorage.getItem(CACHE_KEY);
+  if (ts && raw && Date.now() - Number(ts) < CACHE_TTL_MS) {
+    items = JSON.parse(raw);
+    return;
+  }
+  await fetchAndCache();
+}
+
+async function refreshCache() {
+  localStorage.removeItem(CACHE_KEY);
+  localStorage.removeItem(CACHE_TS_KEY);
+  await fetchAndCache();
+  renderList();
 }
 
 
@@ -422,6 +450,24 @@ document.getElementById('drawer-reset-btn').addEventListener('click', () => {
   updateFilterDot();
 });
 
+
+// Refresh cache button
+document.getElementById('refresh-cache-btn').addEventListener('click', async e => {
+  e.preventDefault();
+  const btn = e.currentTarget;
+  btn.textContent = 'Refreshing…';
+  btn.style.pointerEvents = 'none';
+  try {
+    await refreshCache();
+    btn.textContent = 'Refreshed';
+  } catch (_) {
+    btn.textContent = 'Failed';
+  }
+  setTimeout(() => {
+    btn.textContent = 'Refresh data';
+    btn.style.pointerEvents = '';
+  }, 2000);
+});
 
 // ── Init ──────────────────────────────────────────────────
 
