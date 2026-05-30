@@ -171,7 +171,7 @@ html, body {
 [data-theme="light"] .theme-icon--sun { display: none; }
 [data-theme="light"] .theme-icon--moon { display: inline-block; }
 
-.filter-btn .svg-inline--fa {
+.filter-icon-btn .svg-inline--fa {
   width: 20px;
   height: auto;
 }
