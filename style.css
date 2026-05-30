@@ -158,7 +158,6 @@ html, body {
 }
 
 /* Theme toggle: show moon in light mode, sun in dark mode */
-.theme-icon { font-size: 1.1rem; line-height: 1; }
 .theme-icon--sun { display: none; }
 .theme-icon--moon { display: inline-block; }
 
