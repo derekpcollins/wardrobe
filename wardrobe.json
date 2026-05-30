@@ -544,7 +544,7 @@
   },
   {
     "id": "fresh-clean-threads-crew-white",
-    "status": "retire",
+    "status": "owned",
     "category": "tops",
     "name": "Fresh Clean Threads Crew Neck Tee",
     "brand": "Fresh Clean Threads",
@@ -564,7 +564,7 @@
     "quantity": 3,
     "idealQuantity": 3,
     "notes": "Was go-to everyday tee but Express holds up better. Now used primarily for workouts. Love the fit but they look worn after just a few washes.",
-    "retiring": false
+    "retiring": true
   },
   {
     "id": "nike-c1ty-shoes",
