@@ -426,6 +426,27 @@
     "retiring": false
   },
   {
+    "id": "uniqlo-colorful-50-socks-gray",
+    "status": "owned",
+    "category": "basics",
+    "name": "Uniqlo Colorful 50 Socks",
+    "brand": "Uniqlo",
+    "url": "https://www.uniqlo.com/us/en/products/E482605-000/00?colorDisplayCode=06&sizeDisplayCode=027",
+    "price": 4.9,
+    "size": null,
+    "color": "Gray",
+    "colorHex": "#808080",
+    "seasons": [
+      "winter"
+    ],
+    "datePurchased": null,
+    "replacementIntervalDays": 365,
+    "quantity": 3,
+    "idealQuantity": 3,
+    "notes": "Fine, not great. Would prefer to find a different go-to winter sock.",
+    "retiring": false
+  },
+  {
     "id": "saxx-vibe-trunk-black",
     "status": "owned",
     "category": "basics",
