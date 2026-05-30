@@ -343,21 +343,20 @@ function isDarkActive() {
 function updateThemeIcon() {
   const btn = document.getElementById('theme-toggle-btn');
   const dark = isDarkActive();
-  btn.innerHTML = dark ? '<i class="fa-light fa-sun"></i>' : '<i class="fa-light fa-moon"></i>';
   btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
 }
 
 function toggleTheme() {
   const newDark = !isDarkActive();
   document.documentElement.setAttribute('data-theme', newDark ? 'dark' : 'light');
-  localStorage.setItem('theme', newDark ? 'dark' : 'light');
+  localStorage.setItem('wardrobe-theme', newDark ? 'dark' : 'light');
   updateThemeIcon();
 }
 
 function initTheme() {
   updateThemeIcon();
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-    if (!localStorage.getItem('theme')) updateThemeIcon();
+    if (!localStorage.getItem('wardrobe-theme')) updateThemeIcon();
   });
 }
 

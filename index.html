@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/42976baa39.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="style.css">
-  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}());</script>
+  <script>(function(){var t=localStorage.getItem('wardrobe-theme');if(t)document.documentElement.setAttribute('data-theme',t);}());</script>
 </head>
 <body>
   <div id="app">
@@ -38,7 +38,8 @@
       </div>
       <div class="header-actions">
         <button class="filter-icon-btn" id="theme-toggle-btn" aria-label="Switch to dark mode">
-          <i class="fa-light fa-moon"></i>
+          <i class="fa-light fa-moon theme-icon--light"></i>
+          <i class="fa-light fa-sun theme-icon--dark"></i>
         </button>
         <button class="filter-icon-btn filter-btn" id="filter-btn" aria-label="Open filters">
           <i class="fa-light fa-sliders-up"></i>
