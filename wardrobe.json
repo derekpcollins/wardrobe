@@ -466,7 +466,7 @@
     "datePurchased": null,
     "replacementIntervalDays": 180,
     "quantity": 3,
-    "idealQuantity": 3,
+    "idealQuantity": 10,
     "notes": "Favorite boxers. Need more! Price is for a 3-pack.",
     "retiring": false
   },
@@ -514,7 +514,7 @@
     "datePurchased": null,
     "replacementIntervalDays": 1825,
     "quantity": 2,
-    "idealQuantity": 3,
+    "idealQuantity": 1,
     "notes": "Go-to everyday belt. Have two in the same color — ended up with a duplicate after losing one temporarily. Would like other colors but not urgent.",
     "retiring": false
   },
@@ -544,7 +544,7 @@
   },
   {
     "id": "fresh-clean-threads-crew-white",
-    "status": "owned",
+    "status": "retire",
     "category": "tops",
     "name": "Fresh Clean Threads Crew Neck Tee",
     "brand": "Fresh Clean Threads",
