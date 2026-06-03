@@ -378,6 +378,50 @@
     "retiring": false
   },
   {
+    "id": "express-chino-shorts-brown",
+    "status": "owned",
+    "category": "bottoms",
+    "name": "6\" Comfort Waist Hyper Stretch Slim Chino Shorts",
+    "brand": "Express",
+    "url": "https://www.express.com/clothing/men/6%22-comfort-waist-hyper-stretch-slim-chino-shorts/pro/03533432/color/BROWN/size/32",
+    "price": 39,
+    "size": "32",
+    "color": "Brown",
+    "colorHex": "#6B4226",
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "datePurchased": "2026-04-30",
+    "replacementIntervalDays": 1095,
+    "quantity": 2,
+    "idealQuantity": 2,
+    "notes": "",
+    "retiring": false
+  },
+  {
+    "id": "express-chino-shorts-navy",
+    "status": "owned",
+    "category": "bottoms",
+    "name": "6\" Comfort Waist Hyper Stretch Slim Chino Shorts",
+    "brand": "Express",
+    "url": "https://www.express.com/clothing/men/6%22-comfort-waist-hyper-stretch-slim-chino-shorts/pro/03533432/color/Navy/size/32",
+    "price": 39,
+    "size": "32",
+    "color": "Navy Blue",
+    "colorHex": "#1B2A4A",
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "datePurchased": "2026-05-28",
+    "replacementIntervalDays": 1095,
+    "quantity": 1,
+    "idealQuantity": 2,
+    "notes": "",
+    "retiring": false
+  },
+  {
     "id": "uniqlo-sport-socks-white",
     "status": "owned",
     "category": "basics",
