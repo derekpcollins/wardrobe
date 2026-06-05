@@ -428,7 +428,7 @@
     "name": "Uniqlo Sport Socks",
     "brand": "Uniqlo",
     "url": "https://www.uniqlo.com/us/en/products/E471958-000/",
-    "price": 5.90,
+    "price": 5.9,
     "size": null,
     "color": "White",
     "colorHex": "#f5f5f5",
@@ -452,7 +452,7 @@
     "name": "Uniqlo Sport Socks",
     "brand": "Uniqlo",
     "url": "https://www.uniqlo.com/us/en/products/E471958-000/",
-    "price": 5.90,
+    "price": 5.9,
     "size": null,
     "color": "Black",
     "colorHex": "#1a1a1a",
@@ -585,30 +585,6 @@
     "idealQuantity": 7,
     "notes": "Was go-to everyday tee but Express holds up better. Now used primarily for workouts. Love the fit but they look worn after just a few washes.",
     "retiring": false
-  },
-  {
-    "id": "fresh-clean-threads-crew-white",
-    "status": "owned",
-    "category": "tops",
-    "name": "Fresh Clean Threads Crew Neck Tee",
-    "brand": "Fresh Clean Threads",
-    "url": "https://freshcleantees.com/products/black-crew-neck?variant=40308927529035",
-    "price": 23,
-    "size": "M",
-    "color": "White",
-    "colorHex": "#f5f5f5",
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "datePurchased": null,
-    "replacementIntervalDays": 365,
-    "quantity": 3,
-    "idealQuantity": 3,
-    "notes": "Was go-to everyday tee but Express holds up better. Now used primarily for workouts. Love the fit but they look worn after just a few washes.",
-    "retiring": true
   },
   {
     "id": "nike-c1ty-shoes",
