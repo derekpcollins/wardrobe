@@ -13,7 +13,8 @@
     "seasons": [
       "spring",
       "summer",
-      "fall"
+      "fall",
+      "winter"
     ],
     "datePurchased": null,
     "replacementIntervalDays": 730,
