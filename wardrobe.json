@@ -587,6 +587,29 @@
     "retiring": false
   },
   {
+    "id": "fresh-clean-threads-crew-neck-tee-army-green",
+    "status": "owned",
+    "category": "tops",
+    "name": "Fresh Clean Threads Crew Neck Tee",
+    "brand": "Fresh Clean Threads",
+    "url": "https://freshcleantees.com/products/army-crew-neck",
+    "price": 23,
+    "size": "L",
+    "color": "Army Green",
+    "colorHex": "",
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "datePurchased": "2026-05-26",
+    "replacementIntervalDays": 730,
+    "quantity": 1,
+    "idealQuantity": 2,
+    "notes": "",
+    "retiring": false
+  },
+  {
     "id": "nike-c1ty-shoes",
     "status": "owned",
     "category": "footwear",
