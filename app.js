@@ -325,7 +325,6 @@ function renderItemCard(item) {
             ${conditionBadge ? `<div class="item-top-right">${conditionBadge}</div>` : ''}
           </div>
           ${metaHtmlParts.length ? `<div class="item-meta">${metaHtmlParts.join(' · ')}</div>` : ''}
-          ${item.notes ? `<div class="item-notes">${esc(item.notes)}</div>` : ''}
           ${rowBadges.length ? `<div class="item-badges">${rowBadges.join('')}</div>` : ''}
         </div>
       </div>
