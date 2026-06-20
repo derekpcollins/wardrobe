@@ -540,6 +540,29 @@
     "retiring": false
   },
   {
+    "id": "ray-ban-aviator-gradient-sunglasses",
+    "status": "owned",
+    "category": "accessories",
+    "name": "Ray-Ban Aviator Gradient Sunglasses",
+    "brand": "Ray-Ban",
+    "url": "https://www.ray-ban.com/usa/sunglasses/RB3025aviator%20gradient-gunmetal/805289467052",
+    "price": 170,
+    "size": "L",
+    "color": "Silver",
+    "colorHex": "",
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "datePurchased": "2026-06-20",
+    "replacementIntervalDays": 1825,
+    "quantity": 1,
+    "idealQuantity": 1,
+    "notes": "RB3025 58 AVIATOR LARGE METAL, Slv, Blu, 0RB3025 003/3F, UPC: 805289307693",
+    "retiring": false
+  },
+  {
     "id": "fresh-clean-threads-crew-black",
     "status": "owned",
     "category": "tops",
