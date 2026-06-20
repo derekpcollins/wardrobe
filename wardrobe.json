@@ -551,7 +551,7 @@
     "size": "L",
     "color": "Silver",
     "colorHex": "",
-    "colorStyle": "linear-gradient(135deg, #a8d8ea, #e8e8e8)",
+    "colorStyle": "linear-gradient(180deg, #a8d8ea, #e8e8e8)",
     "seasons": [
       "spring",
       "summer",
