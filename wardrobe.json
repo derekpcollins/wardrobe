@@ -211,29 +211,6 @@
     "retiring": false
   },
   {
-    "id": "vrst-pinnacle-hoodie-yellow",
-    "status": "owned",
-    "category": "tops",
-    "name": "VRST Men's Pinnacle Fleece Hoodie",
-    "brand": "VRST",
-    "url": "https://www.dickssportinggoods.com/p/vrst-mens-pinnacle-hoodie-25vrsmcasuscbhdxxxedb/25vrsmcasuscbhdxxxedb?color=Coral",
-    "price": 88,
-    "size": "M",
-    "color": "Dark Yellow",
-    "colorHex": "#c9a800",
-    "seasons": [
-      "spring",
-      "fall",
-      "winter"
-    ],
-    "datePurchased": null,
-    "replacementIntervalDays": 1095,
-    "quantity": 1,
-    "idealQuantity": 1,
-    "notes": "",
-    "retiring": true
-  },
-  {
     "id": "express-supersoft-tee-black",
     "status": "owned",
     "category": "tops",
