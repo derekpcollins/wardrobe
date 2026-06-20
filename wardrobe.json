@@ -400,6 +400,52 @@
     "retiring": false
   },
   {
+    "id": "old-navy-slim-chino-shorts-dark-gray",
+    "status": "owned",
+    "category": "bottoms",
+    "name": "Old Navy Slim Built-In Flex Rotation Chino Shorts",
+    "brand": "Old Navy",
+    "url": "https://oldnavy.gap.com/browse/product.do?pid=861900002&tid=onma000014",
+    "price": 12.99,
+    "size": "33W",
+    "color": "Dark Gray",
+    "colorHex": "#4a4a4a",
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "datePurchased": "2026-04-12",
+    "replacementIntervalDays": 730,
+    "quantity": 2,
+    "idealQuantity": 2,
+    "notes": "",
+    "retiring": false
+  },
+  {
+    "id": "old-navy-slim-chino-shorts-moonlight-ocean",
+    "status": "owned",
+    "category": "bottoms",
+    "name": "Old Navy Slim Built-In Flex Rotation Chino Shorts",
+    "brand": "Old Navy",
+    "url": "https://oldnavy.gap.com/browse/product.do?pid=861900032&tid=onma000014",
+    "price": 12.99,
+    "size": "33W",
+    "color": "Moonlight Ocean",
+    "colorHex": "#7a9ab5",
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "datePurchased": "2026-04-12",
+    "replacementIntervalDays": 730,
+    "quantity": 2,
+    "idealQuantity": 2,
+    "notes": "",
+    "retiring": false
+  },
+  {
     "id": "uniqlo-sport-socks-white",
     "status": "owned",
     "category": "basics",
