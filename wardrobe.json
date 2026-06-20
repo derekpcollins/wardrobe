@@ -156,10 +156,10 @@
       "fall",
       "winter"
     ],
-    "datePurchased": null,
+    "datePurchased": "2026-06-20",
     "replacementIntervalDays": 1095,
-    "quantity": 1,
-    "idealQuantity": 1,
+    "quantity": 2,
+    "idealQuantity": 2,
     "notes": "On sale price was $17.23.",
     "retiring": false
   },
