@@ -2,7 +2,7 @@
 
 // ── Constants ─────────────────────────────────────────────
 
-const CATEGORIES = ['basics', 'tops', 'bottoms', 'outerwear', 'footwear', 'accessories'];
+const CATEGORIES = ['basics', 'tops', 'bottoms', 'outerwear', 'footwear', 'accessories', 'workout'];
 
 const CATEGORY_LABELS = {
   basics: 'Basics',
@@ -11,6 +11,7 @@ const CATEGORY_LABELS = {
   outerwear: 'Outerwear',
   footwear: 'Footwear',
   accessories: 'Accessories',
+  workout: 'Workout',
 };
 
 const SEASONS = ['spring', 'summer', 'fall', 'winter'];

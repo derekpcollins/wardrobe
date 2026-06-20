@@ -2,7 +2,7 @@
   {
     "id": "nike-pro-dri-fit-shorts",
     "status": "owned",
-    "category": "basics",
+    "category": "workout",
     "name": "Nike Pro Men's Dri-FIT Fitness Shorts",
     "brand": "Nike",
     "url": "https://www.nike.com/t/pro-mens-dri-fit-fitness-shorts-LR6CBd/FB7958-010",
@@ -25,7 +25,7 @@
   {
     "id": "nike-pro-dri-fit-tights",
     "status": "owned",
-    "category": "basics",
+    "category": "workout",
     "name": "Nike Pro Men's Dri-FIT 3/4-Length Fitness Tights",
     "brand": "Nike",
     "url": "https://www.nike.com/t/pro-mens-dri-fit-3-4-length-fitness-tights-7tnCt4/FB7950-010",
@@ -425,7 +425,7 @@
   {
     "id": "uniqlo-sport-socks-black",
     "status": "owned",
-    "category": "basics",
+    "category": "workout",
     "name": "Uniqlo Sport Socks",
     "brand": "Uniqlo",
     "url": "https://www.uniqlo.com/us/en/products/E471958-000/",
@@ -730,7 +730,7 @@
   {
     "id": "nike-metcon-10-black",
     "status": "owned",
-    "category": "footwear",
+    "category": "workout",
     "name": "Nike Metcon 10 Men's Workout Shoes",
     "brand": "Nike",
     "url": "https://www.nike.com/t/metcon-10-mens-workout-shoes-WWGl2m1D/HJ1875-200",
