@@ -233,7 +233,7 @@
     "quantity": 3,
     "idealQuantity": 3,
     "notes": "Purchased as a 3-pack. On sale price was $48.",
-    "retiring": false
+    "retiring": true
   },
   {
     "id": "express-supersoft-tee-white",
@@ -257,7 +257,7 @@
     "quantity": 3,
     "idealQuantity": 3,
     "notes": "Purchased as a 3-pack. On sale price was $48.",
-    "retiring": false
+    "retiring": true
   },
   {
     "id": "express-pima-tee-black",
@@ -281,7 +281,7 @@
     "quantity": 1,
     "idealQuantity": 3,
     "notes": "Really like these shirts. Not sure if M or L is the right size. On sale price was $28.50.",
-    "retiring": false
+    "retiring": true
   },
   {
     "id": "express-skinny-jeans-medium-wash",
@@ -652,7 +652,7 @@
     ],
     "datePurchased": "2026-05-26",
     "replacementIntervalDays": 730,
-    "quantity": 1,
+    "quantity": 2,
     "idealQuantity": 2,
     "notes": "",
     "retiring": false
