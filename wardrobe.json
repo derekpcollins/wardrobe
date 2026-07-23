@@ -658,6 +658,72 @@
     "retiring": false
   },
   {
+    "id": "fresh-clean-threads-crew-neck-tee-coral",
+    "status": "owned",
+    "category": "tops",
+    "name": "Fresh Clean Threads Crew Neck Tee",
+    "brand": "Fresh Clean Threads",
+    "price": 23,
+    "size": "L",
+    "color": "Coral",
+    "colorHex": "#F88379",
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "datePurchased": "2026-07-02",
+    "replacementIntervalDays": 730,
+    "quantity": 1,
+    "idealQuantity": 1,
+    "retiring": false
+  },
+  {
+    "id": "fresh-clean-threads-crew-neck-tee-heather-grey",
+    "status": "owned",
+    "category": "tops",
+    "name": "Fresh Clean Threads Crew Neck Tee",
+    "brand": "Fresh Clean Threads",
+    "price": 23,
+    "size": "L",
+    "color": "Heather Grey",
+    "colorHex": "#9CA3AF",
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "datePurchased": "2026-07-02",
+    "replacementIntervalDays": 730,
+    "quantity": 1,
+    "idealQuantity": 1,
+    "retiring": false
+  },
+  {
+    "id": "fresh-clean-threads-crew-neck-tee-taupe",
+    "status": "owned",
+    "category": "tops",
+    "name": "Fresh Clean Threads Crew Neck Tee",
+    "brand": "Fresh Clean Threads",
+    "price": 23,
+    "size": "L",
+    "color": "Taupe",
+    "colorHex": "#8B7D6B",
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "datePurchased": "2026-07-02",
+    "replacementIntervalDays": 730,
+    "quantity": 1,
+    "idealQuantity": 1,
+    "retiring": false
+  },
+  {
     "id": "nike-c1ty-shoes",
     "status": "owned",
     "category": "footwear",
